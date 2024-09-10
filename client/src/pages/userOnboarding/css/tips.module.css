@@ -1,0 +1,46 @@
+.tip {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12px;
+  color: rgb(181, 181, 181);
+  width: 300px;
+
+  height: 30px;
+  text-align: center;
+}
+
+@keyframes textAnimation {
+  0% {
+    content: "Tip: Higher Elo means more clout—rate wisely!";
+  }
+  12.5% {
+    content: "Pro Tip: Polls with catchy titles get more votes.";
+  }
+  25% {
+    content: "Did you know? Commenting on polls can boost your Elo too!";
+  }
+  37.5% {
+    content: "Quick Tip: Share your poll to get more votes and rise faster.";
+  }
+  50% {
+    content: "Hint: Combine creativity with strategy for top ratings.";
+  }
+  62.5% {
+    content: "Tip: Active users climb the leaderboard faster—stay engaged!";
+  }
+  75% {
+    content: "Fun Fact: Submissions with visuals get 50% more ratings.";
+  }
+  87.5% {
+    content: "Pro Tip: Check out the trending polls for inspiration.";
+  }
+  100% {
+    content: "Tip: Higher Elo means more clout—rate wisely!";
+  }
+}
+
+.tip::after {
+  content: "👀";
+  margin-left: 5px;
+  animation: textAnimation 30s infinite;
+}

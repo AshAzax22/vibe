@@ -1,0 +1,88 @@
+.body {
+  background-color: black;
+  color: white;
+  display: flex;
+  height: 100vh;
+}
+
+.muralContainer {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  pointer-events: none;
+}
+
+.muralContainer img {
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.formContainer {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 4px;
+  gap: 5em;
+}
+
+.brandName {
+  padding-top: 5em;
+  padding-bottom: 5em;
+  font-size: 5em;
+  font-weight: 700;
+}
+
+.googleAuthContainer {
+  display: flex;
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  gap: 1em;
+}
+
+.googleAuthContainer img {
+  width: 20px;
+  height: 20px;
+}
+
+.formContainer input {
+  width: 38%;
+  background-color: #4a4a4a;
+  border: none;
+  padding: 1em;
+  border-radius: 5px;
+  color: white;
+  font-size: 4em;
+}
+
+.backArrow {
+  transform: rotate(180deg);
+}
+.backArrow:hover {
+  cursor: pointer;
+}
+
+.forgotPassword {
+  font-size: 4em;
+}
+
+.forgotPassword:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.letsGo {
+  width: 40%;
+}
+
+.info {
+  font-size: 4em;
+  color: #6b6b6b;
+}

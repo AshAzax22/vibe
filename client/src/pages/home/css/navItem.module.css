@@ -1,0 +1,30 @@
+.navItemContainer {
+  color: white;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 16px;
+  width: fit-content;
+}
+
+.navItemContainer:hover {
+  cursor: pointer;
+  background-color: #2d2d2d;
+}
+
+.navItemContainer:active {
+  background-color: #3d3d3d;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.itemName {
+  overflow: hidden;
+  height: 24px;
+  transition: all 0.3s ease-in-out;
+}

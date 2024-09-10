@@ -1,0 +1,19 @@
+.title {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: center;
+}
+
+.trendingPollsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.subContainer {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 300px;
+  overflow: auto;
+}

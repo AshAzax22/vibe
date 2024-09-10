@@ -1,0 +1,7 @@
+.masonryGrid {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  background-color: black;
+  filter: grayscale(100%);
+}

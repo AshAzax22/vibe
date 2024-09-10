@@ -1,0 +1,42 @@
+.carouselContainer {
+  overflow: hidden;
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  pointer-events: none; /* Disable pointer events */
+}
+
+.carouselColumn {
+  display: flex;
+  flex-direction: column;
+  animation: scrollUp 20s linear infinite;
+  gap: 10px; /* Gap between consecutive elements */
+}
+
+.carouselColumn.scrollDown {
+  animation: scrollDown 20s linear infinite;
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.carouselItem img {
+  width: 100%; /* Fit the width of the carousel */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  border-radius: 8px;
+}
