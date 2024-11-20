@@ -104,7 +104,7 @@ const SignUp = () => {
           console.log(data);
           localStorage.setItem("token", data.token);
           localStorage.setItem("email", data.email);
-          navigate("/useronboarding");
+          navigate("/home");
         } else {
           let data = await response.json();
           setErrorMessage(data.message);

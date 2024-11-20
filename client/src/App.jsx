@@ -1,32 +1,96 @@
 import "./App.css";
+import { useEffect, useState, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Landing from "./pages/landing/Landing";
-import SignUp from "./pages/signup/SignUp";
-import UserOnboarding from "./pages/userOnboarding/UserOnboarding";
-import Home from "./pages/home/Home";
+import { connectSocket } from "./assets/socket";
+import { SocketProvider } from "./components/SocketProvider";
 import { AuthProvider } from "./components/AuthProvider";
 import ProtectedRoute from "./components/ProtectedRoute";
-import CursorTrail from "./components/CursorTrail";
+import Loading from "./components/Loading";
+import {
+  Landing,
+  SignUp,
+  UserOnboarding,
+  Home,
+  Feed,
+  CreatePoll,
+  Profile,
+  PollDetails,
+  NotFound,
+} from "./components/LazyComponents";
 
 function App() {
+  const [socket, setSocket] = useState(null);
+
+  useEffect(() => {
+    const socketInstance = connectSocket();
+    setSocket(socketInstance);
+
+    return () => {
+      socketInstance.disconnect();
+    };
+  }, []);
+
   return (
     <Router>
-      <CursorTrail />
-
       <AuthProvider>
-        <Routes className="bodyContainer">
-          <Route path="/" element={<Landing />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route
-            path="/useronboarding"
-            element={
-              <ProtectedRoute>
-                <UserOnboarding />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/home" element={<Home />} />
-        </Routes>
+        <SocketProvider socket={socket}>
+          <Suspense fallback={<Loading />}>
+            <Routes className="bodyContainer">
+              <Route path="/" element={<Landing />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route
+                path="/useronboarding"
+                element={
+                  <ProtectedRoute>
+                    <UserOnboarding />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/home"
+                element={
+                  <ProtectedRoute>
+                    <Home>
+                      <Feed />
+                    </Home>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/add-a-poll"
+                element={
+                  <ProtectedRoute>
+                    <Home>
+                      <CreatePoll />
+                    </Home>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Home>
+                      <Profile />
+                    </Home>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/poll/:pollId"
+                element={
+                  <ProtectedRoute>
+                    <Home>
+                      <PollDetails />
+                    </Home>
+                  </ProtectedRoute>
+                }
+              ></Route>
+
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </SocketProvider>
       </AuthProvider>
     </Router>
   );

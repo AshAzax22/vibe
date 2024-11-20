@@ -1,0 +1,25 @@
+.stats {
+  display: flex;
+  padding: 4px;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.stat:hover {
+  background-color: #1f1f1f;
+  border-radius: 8px;
+}
+
+.statTitle {
+  color: #878787;
+}

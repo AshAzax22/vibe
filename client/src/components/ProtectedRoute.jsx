@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../components/AuthProvider";
+import Loading from "./Loading";
 
 const ProtectedRoute = ({ children }) => {
   const [isAuth, setIsAuth] = useState(null);
@@ -25,7 +26,7 @@ const ProtectedRoute = ({ children }) => {
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   return isAuth ? children : <Navigate to="/signup" />;

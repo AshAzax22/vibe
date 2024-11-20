@@ -23,8 +23,15 @@
   height: 24px;
 }
 
+.navItemContainer p {
+  display: flex;
+  align-items: center;
+}
+
 .itemName {
   overflow: hidden;
   height: 24px;
+  font-size: 16px;
+  line-height: 16px;
   transition: all 0.3s ease-in-out;
 }

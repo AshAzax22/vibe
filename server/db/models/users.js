@@ -13,6 +13,18 @@ const userSchema = new mongoose.Schema({
   avatar: {
     type: Number,
   },
+  pollsCreated: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "polls",
+    },
+  ],
+  pollsVoted: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "polls",
+    },
+  ],
 });
 
 module.exports = mongoose.model("users", userSchema);

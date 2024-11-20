@@ -1,13 +1,9 @@
 const mongoose = require("mongoose");
-const { MONGO_URI } = require("./config");
+const { MONGO_URI } = require("../config/config");
 
 const connectDB = async () => {
   try {
-    console.log("accessing mongo function");
-    await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGO_URI, {});
     console.log("MongoDB connected");
   } catch (err) {
     console.error(err.message);

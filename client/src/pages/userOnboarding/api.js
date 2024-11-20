@@ -1,5 +1,7 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const searchUser = async (username) => {
-  const response = await fetch("http://localhost:3000/searchusername", {
+  const response = await fetch(`${API_BASE_URL}/searchusername`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -11,7 +13,7 @@ export const searchUser = async (username) => {
 
 export const setUserProfile = async (username, index) => {
   const email = localStorage.getItem("email");
-  const response = await fetch("http://localhost:3000/setuserprofile", {
+  const response = await fetch(`${API_BASE_URL}/setuserprofile`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

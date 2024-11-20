@@ -1,8 +1,14 @@
-import React from "react";
+import { useEffect } from "react";
 import styles from "./css/landing.module.css";
 import { Link } from "react-router-dom";
 
 const Landing = () => {
+  useEffect(() => {
+    if (localStorage.getItem("email")) {
+      window.location.href = "/home";
+    }
+  }, []);
+
   return (
     <div className={styles.body}>
       <p className={styles.brandName}>VIBE</p>

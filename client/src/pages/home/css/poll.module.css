@@ -35,6 +35,11 @@
   gap: 12px;
 }
 
+.uploadDate {
+  font-size: 12px;
+  color: #b3b3b3;
+}
+
 .voteCount {
   font-size: 16px;
   color: #b3b3b3;
@@ -64,6 +69,8 @@
   cursor: pointer;
   background-color: black;
   transition: all 0.3s ease-in-out;
+  border: 2px solid black;
+  position: relative;
 }
 
 .option:hover {

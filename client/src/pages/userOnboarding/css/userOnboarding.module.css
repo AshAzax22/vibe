@@ -77,9 +77,12 @@ input {
 }
 
 .progressiveButton {
+  padding: 8px 32px;
   background-color: blue;
   color: white;
   border: 1px solid blue;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .progressiveButton:hover {

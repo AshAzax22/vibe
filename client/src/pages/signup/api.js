@@ -1,5 +1,7 @@
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const searchUser = async (email) => {
-  const response = await fetch("http://localhost:3000/searchUser", {
+  const response = await fetch(`${API_BASE_URL}/searchuser`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -10,7 +12,7 @@ export const searchUser = async (email) => {
 };
 
 export const login = async (email, password) => {
-  const response = await fetch("http://localhost:3000/login", {
+  const response = await fetch(`${API_BASE_URL}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -21,7 +23,7 @@ export const login = async (email, password) => {
 };
 
 export const updatePassword = async (email, password) => {
-  const response = await fetch("http://localhost:3000/updatepassword", {
+  const response = await fetch(`${API_BASE_URL}/updatepassword`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -32,7 +34,7 @@ export const updatePassword = async (email, password) => {
 };
 
 export const verifyOtp = async (email, otp) => {
-  const response = await fetch("http://localhost:3000/verifyotp", {
+  const response = await fetch(`${API_BASE_URL}/verifyotp`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -43,7 +45,7 @@ export const verifyOtp = async (email, otp) => {
 };
 
 export const signUp = async (email, password) => {
-  const response = await fetch("http://localhost:3000/signUp", {
+  const response = await fetch(`${API_BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -54,7 +56,7 @@ export const signUp = async (email, password) => {
 };
 
 export const requestOtp = async (email) => {
-  const response = await fetch("http://localhost:3000/requestOtp", {
+  const response = await fetch(`${API_BASE_URL}/requestotp`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -1,0 +1,11 @@
+.userPollsContainer {
+  width: 95%;
+  align-self: center;
+  margin-top: 20px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-x: hidden;
+}

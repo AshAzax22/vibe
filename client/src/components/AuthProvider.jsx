@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from "react";
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const AuthContext = createContext();
 
 export const useAuth = () => {
@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
       return false;
     }
     try {
-      const response = await fetch("http://localhost:3000/authorize", {
+      const response = await fetch(`${API_BASE_URL}/authorize`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

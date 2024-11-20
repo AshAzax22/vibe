@@ -1,0 +1,31 @@
+.switchNavContainer {
+  display: flex;
+  align-content: flex-end;
+  width: fit-content;
+  gap: 16px;
+  padding: 8px;
+  background-color: #202020;
+  border-radius: 8px;
+}
+
+.tab {
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #878787;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.tab:hover {
+  background-color: #1b1b1b;
+}
+
+.selected {
+  color: white;
+  background-color: black;
+}
+
+.selected:hover {
+  background-color: black;
+}

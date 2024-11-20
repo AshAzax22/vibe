@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../css/navbar.module.css";
+import { getUser } from "../api";
 import NavItem from "./NavItem";
 import homeIcon from "../images/home.svg";
 import notificationIcon from "../images/notification.svg";
@@ -7,11 +8,21 @@ import addIcon from "../images/add.svg";
 import settingsIcon from "../images/settings.svg";
 import moreIcon from "../images/more.svg";
 import logOutIcon from "../images/log out.svg";
-import AvatarIcon from "../../../assets/avatars/Preview.png";
 import closeIcon from "../images/close.svg";
+import avatars from "../../../assets/avatars";
 
 const Navbar = () => {
-  const [navState, setNavState] = useState(false);
+  const [navState, setNavState] = useState(true);
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const getUserDetails = async () => {
+      const userDetails = await getUser();
+      const data = await userDetails.json();
+      setUser(data);
+    };
+    getUserDetails();
+  }, []);
 
   return (
     <>
@@ -30,18 +41,23 @@ const Navbar = () => {
         </div>
         <section>
           <NavItem icon={homeIcon} itemName={"Home"} navState={navState} />
+          <NavItem icon={addIcon} itemName={"Add a poll"} navState={navState} />
           <NavItem
             icon={notificationIcon}
             itemName={"Notifications"}
             navState={navState}
           />
-          <NavItem icon={addIcon} itemName={"Add a poll"} navState={navState} />
           <NavItem
             icon={settingsIcon}
             itemName={"Settings"}
             navState={navState}
           />
-          <NavItem icon={AvatarIcon} itemName={"Profile"} navState={navState} />
+          <NavItem
+            icon={avatars[user.avatar]}
+            itemName={user.username}
+            navState={navState}
+            kind={"avatar"}
+          />
         </section>
         <section>
           <NavItem icon={moreIcon} itemName={"More"} navState={navState} />
