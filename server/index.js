@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: ["http://localhost:5000", "https://vibe-chi.vercel.app"], // Add your frontend domain here
+  origin: ["http://localhost:5000", "https://vibe-rosy.vercel.app"], // Add your frontend domain here
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
@@ -26,7 +26,8 @@ app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 
 app.get("/", (req, res) => {
-  res.send("Welcome to the API");
+  const { jwt_key } = require("./config/config");
+  res.send(`Welcome to the API server. JWT key is ${jwt_key}`);
 });
 
 // Use user routes
