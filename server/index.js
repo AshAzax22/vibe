@@ -10,13 +10,20 @@ const app = express();
 const server = http.createServer(app);
 const io = initializeSocket(server);
 
-// Connect to database
 connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
-app.options("*", cors());
+
+const corsOptions = {
+  origin: ["http://localhost:5000", "https://vibe-chi.vercel.app"], // Add your frontend domain here
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.get("/", (req, res) => {
   res.send("Welcome to the API");
