@@ -26,8 +26,8 @@ app.use(cors(corsOptions));
 app.options("*", cors(corsOptions));
 
 app.get("/", (req, res) => {
-  const { jwt_key } = require("./config/config");
-  res.send(`Welcome to the API server. JWT key is ${jwt_key}`);
+  const { JWT_SECRET } = require("./config/config");
+  res.send(`Welcome to the API server. JWT key is ${JWT_SECRET}`);
 });
 
 // Use user routes
