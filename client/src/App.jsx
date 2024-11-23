@@ -6,6 +6,8 @@ import { SocketProvider } from "./components/SocketProvider";
 import { AuthProvider } from "./components/AuthProvider";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Loading from "./components/Loading";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 import {
   Landing,
   SignUp,
@@ -19,6 +21,7 @@ import {
 } from "./components/LazyComponents";
 
 function App() {
+  console.log(API_BASE_URL);
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
