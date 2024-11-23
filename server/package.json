@@ -4,7 +4,8 @@
   "description": "server side code",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "echo 'No build step required'"
   },
   "author": "AshAzax22",
   "license": "ISC",
