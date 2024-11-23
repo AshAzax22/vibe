@@ -1,7 +1,7 @@
 import { useState } from "react";
-import styles from "../css/createPoll.module.css";
-import { createPoll } from "../api";
-import PopUp from "./PopUp";
+import styles from "./css/createPoll.module.css";
+import { createPoll } from "../../api";
+import PopUp from "../PopUp";
 
 const CreatePoll = () => {
   const [question, setQuestion] = useState("");

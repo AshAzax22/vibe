@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "../css/switchNav.module.css";
 const SwitchNav = ({ selectedTab, setSelectedTab }) => {
   const handleTabClick = (tab) => {

@@ -108,12 +108,12 @@ const getUser = async (email) => {
   if (!user) {
     throw new Error("user not found");
   }
-  return { username: user.username, avatar: user.avatar };
+  return { username: user.username, avatar: user.avatar, _id: user._id };
 };
 
-const getUserData = async (email) => {
+const getUserData = async (username) => {
   const user = await users
-    .findOne({ email })
+    .findOne({ username })
     .populate({
       path: "pollsCreated",
       select: "_id question date options",
@@ -123,6 +123,14 @@ const getUserData = async (email) => {
       path: "pollsVoted",
       select: "_id question date options",
       populate: { path: "options", select: "voters" },
+    })
+    .populate({
+      path: "followers",
+      select: "username -_id", // Include only the username field and exclude the _id field
+    })
+    .populate({
+      path: "following",
+      select: "username -_id", // Include only the username field and exclude the _id field
     });
 
   if (!user) {
@@ -140,12 +148,76 @@ const getUserData = async (email) => {
       ),
     }));
 
+  const followersUsernames = user.followers.map(
+    (follower) => follower.username
+  );
+  const followingUsernames = user.following.map(
+    (followed) => followed.username
+  );
+
   return {
+    _id: user._id,
     username: user.username,
     avatar: user.avatar,
     pollsCreated: mapPolls(user.pollsCreated),
     pollsVoted: mapPolls(user.pollsVoted),
+    followers: followersUsernames,
+    following: followingUsernames,
   };
+};
+
+const follow = async (userFollowing, userFollowed, io) => {
+  const user1 = await users.findOne({ username: userFollowing });
+  const user2 = await users.findOne({ username: userFollowed });
+  if (!user1 || !user2) {
+    throw new Error("User not found");
+  }
+  if (user1 == user2) {
+    throw new Error("Cannot follow yourself");
+  }
+  if (user1.following.includes(user2._id)) {
+    throw new Error("Already following");
+  }
+
+  user1.following.push(user2._id);
+  user2.followers.push(user1._id);
+
+  io.to(user1._id.toString()).emit("following", { username: user2.username }); //notification to user1 that he followed user2
+  io.to(user2._id.toString()).emit("followed", { username: user1.username }); //notification to user2 that he is followed by user1
+
+  await user1.save();
+  await user2.save();
+
+  return { message: "successfully followed" };
+};
+
+const unfollow = async (userUnFollowing, userUnFollowed, io) => {
+  const user1 = await users.findOne({ username: userUnFollowing });
+  const user2 = await users.findOne({ username: userUnFollowed });
+  if (!user1 || !user2) {
+    throw new Error("User not found");
+  }
+  if (user1 == user2) {
+    throw new Error("Cannot unfollow yourself");
+  }
+  if (!user1.following.includes(user2._id)) {
+    throw new Error("Not following");
+  }
+
+  user1.following = user1.following.filter(
+    (_id) => _id.toString() !== user2._id.toString()
+  );
+  user2.followers = user2.followers.filter(
+    (_id) => _id.toString() !== user1._id.toString()
+  );
+
+  await user1.save();
+  await user2.save();
+
+  io.to(user1._id.toString()).emit("unfollowing", { username: user2.username }); //notification to user1 that he unfollowed user2
+  io.to(user2._id.toString()).emit("unfollowed", { username: user1.username }); //notification to user2 that he is unfollowed by user1
+
+  return { message: "successfully unfollowed" };
 };
 
 module.exports = {
@@ -160,4 +232,6 @@ module.exports = {
   setUserProfile,
   getUser,
   getUserData,
+  follow,
+  unfollow,
 };

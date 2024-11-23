@@ -32,7 +32,22 @@
   justify-content: center;
   width: fit-content;
   border-radius: 8px;
-  gap: 12px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 28px;
+  transition: all 0.3s ease-in-out;
+}
+
+.userInfo:hover {
+  background-color: #4a4a4a;
+}
+
+.userInfo:active {
+  background-color: #3d3d3d;
+}
+
+.userInfo .subContainer {
+  padding: 0px 24px 0px 12px;
 }
 
 .uploadDate {

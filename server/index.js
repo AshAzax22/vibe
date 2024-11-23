@@ -24,6 +24,22 @@ app.use("/", createUserRoutes(io));
 
 io.on("connection", (socket) => {
   console.log("user connected : ", socket.id);
+
+  socket.on("join", (userId) => {
+    const roomId = userId.toString();
+    socket.join(roomId);
+    console.log(`User with ID ${userId} joined room ${userId}`);
+  });
+
+  socket.on("leave", (userId) => {
+    const roomId = userId.toString();
+    socket.leave(roomId);
+    console.log(`User with ID ${userId} left room ${userId}`);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("A user disconnected");
+  });
 });
 
 server.listen(PORT, "0.0.0.0", () => {

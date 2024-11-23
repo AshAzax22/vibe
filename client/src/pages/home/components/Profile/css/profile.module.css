@@ -1,0 +1,84 @@
+* {
+  transition: all 0.3s ease-in-out;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  gap: 16px;
+}
+.title {
+  color: white;
+  font-size: 24px;
+  font-weight: 900;
+  margin: 12px auto;
+}
+.profileContainer {
+  margin: 0 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  background-color: black;
+  gap: 8px;
+  color: white;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  background-color: white;
+  border: 2px solid blue;
+  object-fit: contain;
+}
+
+.username {
+  font-size: 18px;
+}
+
+.follow {
+  color: white;
+  background-color: blue;
+  border: 1px solid blue;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.follow:hover {
+  background-color: white;
+  color: blue;
+}
+
+.follow:active {
+  transform: scale(0.9);
+  background-color: #535353;
+  color: blue;
+}
+
+.unfollow {
+  color: blue;
+  background-color: black;
+  border: 1px solid blue;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.unfollow:hover {
+  background-color: blue;
+  color: white;
+}
+
+.unfollow:active {
+  transform: scale(0.9);
+  background-color: #535353;
+  color: white;
+}

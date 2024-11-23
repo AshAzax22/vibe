@@ -25,6 +25,18 @@ const userSchema = new mongoose.Schema({
       ref: "polls",
     },
   ],
+  followers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+    },
+  ],
+  following: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+    },
+  ],
 });
 
 module.exports = mongoose.model("users", userSchema);

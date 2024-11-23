@@ -14,7 +14,7 @@ const NavItem = ({ icon, itemName, navState, kind }) => {
       ? setNavTo("/notifications")
       : itemName === "Settings"
       ? setNavTo("/settings")
-      : setNavTo("/profile");
+      : setNavTo(`/profile/${itemName}`);
   });
 
   return (

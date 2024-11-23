@@ -40,6 +40,8 @@
   border: 1px solid white;
   border-radius: 4px;
   background-color: black;
+  padding: 12px;
+  color: white;
   /* border: 1px solid red; */
 }
 
@@ -50,15 +52,15 @@
 
 .optionContainer {
   width: 80%;
-  padding: 8px 16px;
+  padding: 12px;
   display: flex;
   justify-content: space-between;
-  /* border: 1px solid red; */
-
   gap: 2%;
 }
 
 .optionInput {
+  font-weight: 700;
+  padding: 10px;
   width: 80%;
 }
 .removeOptionButton {

@@ -5,6 +5,7 @@ import comment from "../images/comment.svg";
 import save from "../images/save.svg";
 import more from "../images/moreVertical.svg";
 import avatars from "../../../assets/avatars";
+import { useNavigate } from "react-router-dom";
 
 const Poll = ({
   pollId,
@@ -36,6 +37,11 @@ const Poll = ({
 
     vote();
   }, [selectedOption, initialSelectionSet]);
+
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate(`/profile/${creator}`);
+  };
 
   // Calculate the total number of votes
   const totalVotes = options.reduce(
@@ -79,7 +85,7 @@ const Poll = ({
     <>
       <div className={styles.pollContainer}>
         <div className={styles.header}>
-          <div className={styles.userInfo}>
+          <div className={styles.userInfo} onClick={handleNavigate}>
             <img
               src={avatars[avatar]}
               alt="profile"

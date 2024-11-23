@@ -1,5 +1,5 @@
 import styles from "../css/userPolls.module.css";
-import TrendingPoll from "./TrendingPoll.jsx";
+import TrendingPoll from "../../Trending/components/TrendingPoll";
 
 const UserPolls = ({ selectedTab, data }) => {
   const remove = selectedTab === "pollsCreated" ? true : false;

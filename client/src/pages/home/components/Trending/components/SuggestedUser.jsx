@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../css/suggestedUser.module.css";
-import avatar from "../../../assets/avatars/Preview.png";
-import more from "../images/moreVertical.svg";
+import avatar from "../../../../../assets/avatars/Preview.png";
+import more from "../../../images/moreVertical.svg";
 
 const formatFollowCount = (count) => {
   if (count >= 1000000) {

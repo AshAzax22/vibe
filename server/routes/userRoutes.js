@@ -11,6 +11,8 @@ const {
   setUserProfile,
   getUser,
   getUserData,
+  follow,
+  unfollow,
 } = require("../services/userServices");
 const {
   createPoll,
@@ -164,9 +166,9 @@ const createUserRoutes = (io) => {
   });
 
   router.get("/userdata", async (req, res) => {
-    const { email } = req.query;
+    const { username } = req.query;
     try {
-      const result = await getUserData(email);
+      const result = await getUserData(username);
       return res.status(200).send(result);
     } catch (err) {
       sendErrorResponse(res, 400, err.message);
@@ -180,7 +182,7 @@ const createUserRoutes = (io) => {
       return res.status(200).send(result);
     } catch (e) {
       console.log(e);
-      return res.status(400).send({ message: e.message });
+      sendErrorResponse(res, 400, err.message);
     }
   });
 
@@ -188,6 +190,26 @@ const createUserRoutes = (io) => {
     const { email, pollId } = req.query;
     try {
       const result = await getPoll(pollId, email);
+      return res.status(200).send(result);
+    } catch (err) {
+      sendErrorResponse(res, 400, err.message);
+    }
+  });
+
+  router.post("/follow", async (req, res) => {
+    const { userFollowing, userFollowed } = req.body;
+    try {
+      const result = await follow(userFollowing, userFollowed, io);
+      return res.status(200).send(result);
+    } catch (err) {
+      sendErrorResponse(res, 400, err.message);
+    }
+  });
+
+  router.post("/unfollow", async (req, res) => {
+    const { userUnFollowing, userUnFollowed } = req.body;
+    try {
+      const result = await unfollow(userUnFollowing, userUnFollowed, io);
       return res.status(200).send(result);
     } catch (err) {
       sendErrorResponse(res, 400, err.message);

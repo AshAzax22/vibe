@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styles from "../css/pollDetails.module.css";
-import { useSocket } from "../../../components/SocketProvider";
-import Loader from "./Loader";
-import Poll from "./Poll";
-import { getPoll } from "../api";
+import styles from "./css/pollDetails.module.css";
+import { useSocket } from "../../../../components/SocketProvider";
+import Loader from "../Loader";
+import Poll from "../Poll";
+import { getPoll } from "../../api";
 const PollDetails = () => {
   const { pollId } = useParams();
   const [poll, setPoll] = useState({});

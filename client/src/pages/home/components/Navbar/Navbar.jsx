@@ -1,29 +1,17 @@
 import { useState, useEffect } from "react";
-import styles from "../css/navbar.module.css";
-import { getUser } from "../api";
-import NavItem from "./NavItem";
-import homeIcon from "../images/home.svg";
-import notificationIcon from "../images/notification.svg";
-import addIcon from "../images/add.svg";
-import settingsIcon from "../images/settings.svg";
-import moreIcon from "../images/more.svg";
-import logOutIcon from "../images/log out.svg";
-import closeIcon from "../images/close.svg";
-import avatars from "../../../assets/avatars";
+import styles from "./css/navbar.module.css";
+import NavItem from "./components/NavItem";
+import homeIcon from "../../images/home.svg";
+import notificationIcon from "../../images/notification.svg";
+import addIcon from "../../images/add.svg";
+import settingsIcon from "../../images/settings.svg";
+import moreIcon from "../../images/more.svg";
+import logOutIcon from "../../images/log out.svg";
+import closeIcon from "../../images/close.svg";
+import avatars from "../../../../assets/avatars";
 
-const Navbar = () => {
+const Navbar = ({ username, avatar }) => {
   const [navState, setNavState] = useState(true);
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    const getUserDetails = async () => {
-      const userDetails = await getUser();
-      const data = await userDetails.json();
-      setUser(data);
-    };
-    getUserDetails();
-  }, []);
-
   return (
     <>
       <div className={styles.navContainer}>
@@ -53,8 +41,8 @@ const Navbar = () => {
             navState={navState}
           />
           <NavItem
-            icon={avatars[user.avatar]}
-            itemName={user.username}
+            icon={avatars[avatar]}
+            itemName={username}
             navState={navState}
             kind={"avatar"}
           />

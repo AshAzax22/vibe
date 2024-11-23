@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../css/trending.module.css";
-import TrendingPersonalities from "./TrendingPersonalities";
-import TrendingPolls from "./TrendingPolls";
+import styles from "./css/trending.module.css";
+import TrendingPersonalities from "./components/TrendingPersonalities";
+import TrendingPolls from "./components/TrendingPolls";
 const Trending = () => {
   return (
     <>

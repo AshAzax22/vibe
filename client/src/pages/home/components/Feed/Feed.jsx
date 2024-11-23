@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useSocket } from "../../../components/SocketProvider";
-import styles from "../css/feed.module.css";
-import Loader from "./Loader";
-import Poll from "./Poll";
-import { getPolls } from "../api";
+import { useSocket } from "../../../../components/SocketProvider";
+import styles from "./css/feed.module.css";
+import Loader from "../Loader";
+import Poll from "../Poll";
+import { getPolls } from "../../api";
 const Feed = () => {
   const [polls, setPolls] = useState([]);
   const [fetchingPolls, setFetchingPolls] = useState(false);
-  const socket = useSocket(); // Correctly call the useSocket hook
+  const socket = useSocket();
 
   useEffect(() => {
     if (socket) {
@@ -24,6 +24,12 @@ const Feed = () => {
               return prevPoll;
             }
           });
+        });
+      });
+
+      socket.on("pollDelete", (pollid) => {
+        setPolls((prevPolls) => {
+          return prevPolls.filter((poll) => poll.pollId !== pollid);
         });
       });
 

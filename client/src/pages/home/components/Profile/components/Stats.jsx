@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../css/stats.module.css";
 
-const Stats = ({ polls }) => {
+const Stats = ({ polls, followers, following }) => {
   return (
     <>
       <div className={styles.stats}>
@@ -10,11 +10,11 @@ const Stats = ({ polls }) => {
           <div className={styles.statTitle}>Polls</div>
         </div>
         <div className={styles.stat}>
-          <div className={styles.statValue}>0</div>
+          <div className={styles.statValue}>{followers}</div>
           <div className={styles.statTitle}>Followers</div>
         </div>
         <div className={styles.stat}>
-          <div className={styles.statValue}>0</div>
+          <div className={styles.statValue}>{following}</div>
           <div className={styles.statTitle}>Following</div>
         </div>
         <div className={styles.stat}>

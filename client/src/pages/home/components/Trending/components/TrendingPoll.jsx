@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "../css/trendingPoll.module.css";
-import trash from "../images/delete.svg";
-import { deletePoll } from "../api";
+import trash from "../../../images/trash.svg";
+import { deletePoll } from "../../../api";
 import { useNavigate } from "react-router-dom";
-import Modal from "./Modal";
+import Modal from "../../Modal";
 
 const formatTimeDifference = (uploaded) => {
   const now = new Date();
