@@ -60,10 +60,11 @@ button:active {
 }
 
 .animatedTextContainer {
-  height: 90em;
+  height: 70em;
   z-index: 1;
   overflow: hidden;
-  position: relative;
+  position: absolute;
+  bottom: 0;
   width: 100%;
   display: flex;
   justify-content: center;

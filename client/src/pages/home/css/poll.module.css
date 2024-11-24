@@ -85,7 +85,6 @@
   background-color: black;
   transition: all 0.3s ease-in-out;
   border: 2px solid black;
-  position: relative;
 }
 
 .option:hover {

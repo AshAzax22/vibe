@@ -6,9 +6,9 @@ import notificationIcon from "../../images/notification.svg";
 import addIcon from "../../images/add.svg";
 import settingsIcon from "../../images/settings.svg";
 import moreIcon from "../../images/more.svg";
-import logOutIcon from "../../images/log out.svg";
 import closeIcon from "../../images/close.svg";
 import avatars from "../../../../assets/avatars";
+import LogOut from "./components/LogOut";
 
 const Navbar = ({ username, avatar }) => {
   const [navState, setNavState] = useState(true);
@@ -49,7 +49,7 @@ const Navbar = ({ username, avatar }) => {
         </section>
         <section>
           <NavItem icon={moreIcon} itemName={"More"} navState={navState} />
-          <NavItem icon={logOutIcon} itemName={"Log Out"} navState={navState} />
+          <LogOut navState={navState} />
         </section>
       </div>
     </>

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import styles from "../css/trendingPoll.module.css";
-import trash from "../../../images/trash.svg";
-import { deletePoll } from "../../../api";
+import styles from "../css/pollMini.module.css";
+import trash from "../images/trash.svg";
+import { deletePoll } from "../api";
 import { useNavigate } from "react-router-dom";
-import Modal from "../../Modal";
+import Modal from "./Modal";
 
 const formatTimeDifference = (uploaded) => {
   const now = new Date();
@@ -42,7 +42,7 @@ const formatVoteCount = (votes) => {
   }
 };
 
-const TrendingPoll = ({ data, remove }) => {
+const PollMini = ({ data, remove }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -102,6 +102,10 @@ const TrendingPoll = ({ data, remove }) => {
         <hr />
       </div>
       <Modal
+        title="Confirm Delete"
+        description="Are you sure you want to delete this item?"
+        negative="Cancel"
+        positive="Delete"
         isOpen={isModalOpen}
         onClose={closeModal}
         onConfirm={confirmDelete}
@@ -110,4 +114,4 @@ const TrendingPoll = ({ data, remove }) => {
   );
 };
 
-export default TrendingPoll;
+export default PollMini;

@@ -39,6 +39,7 @@ hr {
   height: 20px;
   padding: 8px;
   border-radius: 20px;
+  color: white;
 }
 
 .delete:hover {

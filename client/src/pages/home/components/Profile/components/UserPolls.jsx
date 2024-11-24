@@ -1,5 +1,5 @@
 import styles from "../css/userPolls.module.css";
-import TrendingPoll from "../../Trending/components/TrendingPoll";
+import PollMini from "../../PollMini";
 
 const UserPolls = ({ selectedTab, data }) => {
   const remove = selectedTab === "pollsCreated" ? true : false;
@@ -13,7 +13,7 @@ const UserPolls = ({ selectedTab, data }) => {
             <p>No polls yet.</p>
           ) : (
             data.map((poll, index) => (
-              <TrendingPoll key={index} data={poll} remove={remove} />
+              <PollMini key={index} data={poll} remove={remove} />
             ))
           )}
         </div>

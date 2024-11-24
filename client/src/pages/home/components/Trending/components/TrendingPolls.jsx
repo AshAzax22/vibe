@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../css/trendingPolls.module.css";
-import TrendingPoll from "./TrendingPoll";
+import TrendingPoll from "../../PollMini";
 
 const data = [
   {

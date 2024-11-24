@@ -94,14 +94,12 @@ const SignUp = () => {
       case "password":
         response = await login(credentials.email, credentials.password);
         if (response.ok) {
-          alert("welcome to vibe");
           setLoading(false);
           let data = await response.json();
           if (!data.token) {
             alert("authorization failed");
             navigate("/signup");
           }
-          console.log(data);
           localStorage.setItem("token", data.token);
           localStorage.setItem("email", data.email);
           navigate("/home");
@@ -121,7 +119,6 @@ const SignUp = () => {
               alert("authorization failed");
               navigate("/signup");
             }
-            console.log(data);
             localStorage.setItem("token", data.token);
             localStorage.setItem("email", data.email);
             navigate("/useronboarding");
@@ -135,7 +132,6 @@ const SignUp = () => {
       case "forgotPassword":
         response = await verifyOtp(credentials.email, credentials.otp);
         if (response.ok) {
-          console.log("succesfully verified otp");
           setCred("setPassword");
         } else {
           setErrorMessage("Invalid OTP");

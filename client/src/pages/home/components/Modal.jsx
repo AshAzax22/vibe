@@ -2,20 +2,28 @@
 import React from "react";
 import styles from "../css/modal.module.css";
 
-const Modal = ({ isOpen, onClose, onConfirm }) => {
+const Modal = ({
+  title,
+  description,
+  negative,
+  positive,
+  isOpen,
+  onClose,
+  onConfirm,
+}) => {
   if (!isOpen) return null;
 
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-        <h2>Confirm Delete</h2>
-        <p>Are you sure you want to delete this item?</p>
+        <h2>{title}</h2>
+        <p>{description}</p>
         <div className={styles.modalActions}>
           <button className={styles.cancelButton} onClick={onClose}>
-            Cancel
+            {negative}
           </button>
           <button className={styles.confirmButton} onClick={onConfirm}>
-            Delete
+            {positive}
           </button>
         </div>
       </div>
