@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../css/suggestedUser.module.css";
-import avatar from "../../../../../assets/avatars/Preview.png";
-import more from "../../../images/moreVertical.svg";
+import avatars from "../../../assets/avatars.js";
+import more from "../images/moreVertical.svg";
+import { useNavigate } from "react-router-dom";
 
 const formatFollowCount = (count) => {
   if (count >= 1000000) {
@@ -13,13 +14,20 @@ const formatFollowCount = (count) => {
   }
 };
 
-const SuggestedUser = ({ name, followCount }) => {
+const UserMini = ({ username, followCount, avatar = 0 }) => {
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate(`/profile/${username}`);
+  };
   return (
     <>
-      <div className={styles.suggestedUserContainer}>
-        <img src={avatar} alt="profile" className={styles.avatar} />
+      <div
+        className={styles.suggestedUserContainer}
+        onClick={() => handleNavigate()}
+      >
+        <img src={avatars[avatar]} alt="profile" className={styles.avatar} />
         <div className={styles.userInfo}>
-          <p className={styles.userName}>{name}</p>
+          <p className={styles.userName}>{username}</p>
           <p className={styles.followCount}>
             {formatFollowCount(followCount)} followers
           </p>
@@ -31,4 +39,4 @@ const SuggestedUser = ({ name, followCount }) => {
   );
 };
 
-export default SuggestedUser;
+export default UserMini;

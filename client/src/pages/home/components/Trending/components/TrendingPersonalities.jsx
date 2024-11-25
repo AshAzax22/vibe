@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../css/trendingPersonalities.module.css";
-import SuggestedUser from "./SuggestedUser";
+import UserMini from "../../UserMini";
 
 const TrendingPersonalities = () => {
   const userlist = [
@@ -20,9 +20,9 @@ const TrendingPersonalities = () => {
         <div className={styles.subContainer}>
           <div className={styles.suggestedUsersContainer}>
             {userlist.map((user, index) => (
-              <SuggestedUser
+              <UserMini
                 key={index}
-                name={user.name}
+                username={user.name}
                 followCount={user.followCount}
               />
             ))}

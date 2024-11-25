@@ -7,6 +7,7 @@ import PollActivity from "./components/PollActivity.jsx";
 import { getUserData, follow, unfollow } from "../../api.js";
 import { useSocket } from "../../../../components/SocketProvider.jsx";
 import Loader from "../Loader.jsx";
+import FollowData from "./components/FollowData.jsx";
 const Profile = () => {
   const { username } = useParams();
   const socket = useSocket();
@@ -16,16 +17,21 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [follows, setFollows] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);
+  const [found, setFound] = useState(true);
+
+  const [activeTab, setActiveTab] = useState("pollActivity");
 
   useEffect(() => {
     const username = localStorage.getItem("username");
     setActiveUser(username);
-  });
+  }, []);
 
   useEffect(() => {
     if (!activeUser) return;
+    setActiveTab("pollActivity");
 
     const getData = async () => {
+      setLoading(true);
       const response = await getUserData(username);
       if (response.ok) {
         const data = await response.json();
@@ -33,6 +39,7 @@ const Profile = () => {
         setUserData(data);
       } else {
         console.log("error");
+        setFound(false);
       }
     };
 
@@ -132,10 +139,12 @@ const Profile = () => {
     <>
       <div className={styles.profileContainer}>
         <div className={styles.title}>Profile</div>
-        {loading ? (
+        {!found ? (
+          <p className={styles.emptyMessage}>User not found</p>
+        ) : loading ? (
           <div className={styles.loadingContainer}>
             <Loader />
-            <p className={styles.emptyMessage}>Loading your polls</p>
+            <p className={styles.emptyMessage}>Loading Profile</p>
           </div>
         ) : (
           <>
@@ -149,6 +158,7 @@ const Profile = () => {
               polls={userData.pollsCreated.length}
               followers={userData.followers.length}
               following={userData.following.length}
+              setActiveTab={setActiveTab}
             />
             {activeUser !== userData.username &&
               (follows ? (
@@ -168,10 +178,16 @@ const Profile = () => {
                   Follow
                 </button>
               ))}
-            <PollActivity
-              pollsCreated={userData.pollsCreated}
-              pollsVoted={userData.pollsVoted}
-            />
+            {activeTab === "pollActivity" ? (
+              <PollActivity
+                pollsCreated={userData.pollsCreated}
+                pollsVoted={userData.pollsVoted}
+              />
+            ) : activeTab === "followers" ? (
+              <FollowData usernames={userData.followers} title={"Followers"} />
+            ) : activeTab === "following" ? (
+              <FollowData usernames={userData.following} title={"Following"} />
+            ) : null}
           </>
         )}
       </div>

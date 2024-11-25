@@ -1,0 +1,30 @@
+.followDataContainer {
+  width: 95%;
+  align-self: center;
+  margin-top: 20px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-x: hidden;
+}
+
+.title {
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.usersContainer {
+  align-items: center;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 8px;
+  margin-top: 16px;
+  height: fit-content;
+  border-radius: 8px;
+  margin-right: 12px;
+}

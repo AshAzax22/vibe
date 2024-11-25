@@ -9,6 +9,7 @@ const PollDetails = () => {
   const { pollId } = useParams();
   const [poll, setPoll] = useState({});
   const [loading, setLoading] = useState(true);
+  const [found, setFound] = useState(true);
   const socket = useSocket();
 
   useEffect(() => {
@@ -23,10 +24,20 @@ const PollDetails = () => {
     });
 
     const fetchPoll = async () => {
-      const response = await getPoll(pollId);
-      const data = await response.json();
-      setPoll(data);
-      setLoading(false);
+      try {
+        const response = await getPoll(pollId);
+        if (response.ok) {
+          const data = await response.json();
+          setPoll(data);
+          setLoading(false);
+        } else {
+          setFound(false);
+          setLoading(false);
+        }
+      } catch (e) {
+        setFound(false);
+        setLoading(false);
+      }
     };
     fetchPoll();
 
@@ -39,7 +50,9 @@ const PollDetails = () => {
     <>
       <div className={styles.pollDetailsContainer}>
         <h1 className={styles.title}>Polls Page</h1>
-        {loading ? (
+        {!found ? (
+          <p>Poll not found</p>
+        ) : loading ? (
           <div className={styles.loadingContainer}>
             <Loader />
             <p className={styles.emptyMessage}>Loading your poll</p>
