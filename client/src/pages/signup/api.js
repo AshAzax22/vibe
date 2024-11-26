@@ -65,3 +65,14 @@ export const requestOtp = async (email) => {
   });
   return response;
 };
+
+export const googleAuthLogin = async (email) => {
+  const response = await fetch(`${API_BASE_URL}/googlelogin`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email: email }),
+  });
+  return response;
+};

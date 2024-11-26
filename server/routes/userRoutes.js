@@ -13,6 +13,7 @@ const {
   getUserData,
   follow,
   unfollow,
+  googleAuth,
 } = require("../services/userServices");
 const {
   createPoll,
@@ -110,6 +111,16 @@ const createUserRoutes = (io) => {
     try {
       const result = await searchUsername(username);
       return res.status(201).send(result);
+    } catch (err) {
+      sendErrorResponse(res, 400, err.message);
+    }
+  });
+
+  router.post("/googlelogin", async (req, res) => {
+    const { email } = req.body;
+    try {
+      const result = await googleAuth(email);
+      return res.status(200).send(result);
     } catch (err) {
       sendErrorResponse(res, 400, err.message);
     }

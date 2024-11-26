@@ -92,6 +92,34 @@ const searchUsername = async (username) => {
   }
 };
 
+const generateRandomPassword = (length = 8) => {
+  const charset =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    password += charset[randomIndex];
+  }
+  return password;
+};
+
+const googleAuth = async (email) => {
+  const user = await users.findOne({ email });
+  if (user) {
+    const token = generateToken({ email });
+    return { token, message: "successfully logged in", email };
+  } else {
+    const temporaryPassword = generateRandomPassword();
+    const hashed_password = await bcrypt.hash(temporaryPassword, 10);
+    const user = new users({ email });
+    user.password = hashed_password;
+    await user.save();
+    mailer(email, "googleAuth", { temporaryPassword });
+    const token = generateToken({ email });
+    return { token, message: "successfully signed up", email, newUser: true };
+  }
+};
+
 const setUserProfile = async (username, index, email) => {
   const user = await users.findOne({ email });
   if (!user) {
@@ -234,4 +262,5 @@ module.exports = {
   getUserData,
   follow,
   unfollow,
+  googleAuth,
 };

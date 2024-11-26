@@ -9,6 +9,7 @@ import {
   verifyOtp,
   signUp,
   requestOtp,
+  googleAuthLogin,
 } from "./api";
 import EmailInput from "./components/EmailInput";
 import PasswordInput from "./components/PasswordInput";
@@ -17,6 +18,7 @@ import GoogleAuthButton from "./components/GoogleAuthButton";
 import BackArrow from "./components/BackArrow";
 import ErrorMessage from "./components/ErrorMessage";
 import SubmitButton from "./components/SubmitButton";
+import { useGoogleLogin } from "@react-oauth/google";
 
 const SignUp = () => {
   const [credentials, setCredentials] = useState({
@@ -190,6 +192,55 @@ const SignUp = () => {
     );
   }, [cred]);
 
+  const googleAuthorizer = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      console.log(tokenResponse); // Log the token response
+      fetchUserData(tokenResponse.access_token); // Fetch user data
+    },
+  });
+
+  function fetchUserData(accessToken) {
+    const userInfoUrl = "https://www.googleapis.com/oauth2/v3/userinfo";
+    fetch(userInfoUrl, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("User Data:", data);
+        googleLogin(data.email);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  }
+
+  const googleLogin = async (email) => {
+    try {
+      const response = await googleAuthLogin(email);
+      if (response.ok) {
+        let data = await response.json();
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("email", email);
+        if (data.newUser) {
+          navigate("/useronboarding");
+        } else {
+          navigate("/home");
+        }
+      } else {
+        let data = await response.json();
+        setErrorMessage(data.message);
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    googleAuthorizer();
+  };
+
   return (
     <div className={styles.body}>
       <div className={styles.muralContainer}>
@@ -200,7 +251,7 @@ const SignUp = () => {
         <p className={styles.brandName}>VIBE</p>
         {cred !== "email" && <BackArrow onClick={() => setCred("email")} />}
 
-        {cred === "email" && <GoogleAuthButton />}
+        {cred === "email" && <GoogleAuthButton func={handleGoogleLogin} />}
 
         {(cred === "email" || cred === "forgotPassword") && (
           <EmailInput value={credentials.email} onChange={handleChange} />
