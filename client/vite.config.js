@@ -8,9 +8,9 @@ export default defineConfig({
     host: "0.0.0.0", // Listen on all addresses, including LAN
     port: 5000, // Specify the port you want to use
   },
-  build: {
-    rollupOptions: {
-      external: ["@react-oauth/google"],
-    },
-  },
+  // build: {
+  //   rollupOptions: {
+  //     external: ["@react-oauth/google"],
+  //   },
+  // },
 });
