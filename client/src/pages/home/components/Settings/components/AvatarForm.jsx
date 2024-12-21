@@ -14,23 +14,23 @@ const AvatarForm = ({ avatar, handleChange }) => {
           <button onClick={() => setTab(!tab)}>
             {tab ? "Done" : "Change Avatar"}
           </button>
-        </div>
 
-        {tab && (
-          <div className={styles.avatarForm}>
-            <div className={styles.avatarsContainer}>
-              {avatars.map((avatar, index) => (
-                <img
-                  src={avatar}
-                  alt="avatar"
-                  key={index}
-                  className={styles.avatarOption}
-                  onClick={() => handleChange("avatar", index)}
-                />
-              ))}
+          {tab && (
+            <div className={styles.avatarForm}>
+              <div className={styles.avatarsContainer}>
+                {avatars.map((avatar, index) => (
+                  <img
+                    src={avatar}
+                    alt="avatar"
+                    key={index}
+                    className={styles.avatarOption}
+                    onClick={() => handleChange("avatar", index)}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
