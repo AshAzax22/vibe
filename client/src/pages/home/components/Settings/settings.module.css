@@ -1,0 +1,121 @@
+.settingsContainer {
+  margin: 0 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  background-color: black;
+  gap: 24px;
+  color: white;
+}
+.title {
+  color: white;
+  font-size: 24px;
+  font-weight: 900;
+  margin: 12px auto;
+}
+.inputContainer {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+.inputContainer .title {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.inputContainer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputContainer .info {
+  text-align: center;
+  color: rgb(74, 74, 74);
+  font-size: 14px;
+  font-weight: 600;
+}
+.inputContainer input {
+  text-align: center;
+  width: 250px;
+  border-radius: 4px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  transition: all 0.3s ease-in-out;
+  cursor: url("../../images/edit.svg"), auto;
+}
+.inputContainer input:focus {
+  background-color: rgb(39, 39, 39);
+  padding: 12px;
+  outline: none;
+  cursor: text;
+}
+.inputContainer .subContainer {
+  display: flex;
+  gap: 8px;
+}
+.inputContainer .subContainer button {
+  border-radius: 4px;
+  padding: 6px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.inputContainer .subContainer button img {
+  width: 24px;
+  height: 24px;
+}
+
+.inputContainer .subContainer button:active {
+  background-color: white;
+}
+
+.inputContainer .subContainer button:hover {
+  background-color: rgb(39, 39, 39);
+}
+
+.settingsContainer .save {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.settingsContainer .save:hover {
+  background-color: rgb(0, 0, 156);
+}
+
+.settingsContainer .save:active {
+  background-color: blue;
+}
+
+.settingsContainer .save:disabled {
+  background-color: rgb(53, 53, 53);
+  cursor: not-allowed;
+}
+
+.settingsContainer .error {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}

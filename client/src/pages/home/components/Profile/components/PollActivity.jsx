@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import SwitchNav from "./SwitchNav";
 import styles from "../css/pollActivity.module.css";
 import UserPolls from "./UserPolls";
-const PollActivity = ({ pollsCreated, pollsVoted }) => {
+const PollActivity = ({ pollsCreated, pollsVoted, activeUser }) => {
   const [selectedTab, setSelectedTab] = useState("pollsCreated");
   const [data, setData] = useState(pollsCreated);
 
@@ -17,7 +17,7 @@ const PollActivity = ({ pollsCreated, pollsVoted }) => {
       <div className={styles.userPollsContainer}>
         <SwitchNav selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
         <hr />
-        <UserPolls selectedTab={selectedTab} data={data} />
+        <UserPolls data={data} activeUser={activeUser} />
       </div>
     </>
   );

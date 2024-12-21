@@ -144,13 +144,19 @@ const getUserData = async (username) => {
     .findOne({ username })
     .populate({
       path: "pollsCreated",
-      select: "_id question date options",
-      populate: { path: "options", select: "voters" },
+      select: "_id question date options creator",
+      populate: [
+        { path: "options", select: "voters" },
+        { path: "creator", select: "username -_id" },
+      ],
     })
     .populate({
       path: "pollsVoted",
-      select: "_id question date options",
-      populate: { path: "options", select: "voters" },
+      select: "_id question date options creator",
+      populate: [
+        { path: "options", select: "voters" },
+        { path: "creator", select: "username -_id" },
+      ],
     })
     .populate({
       path: "followers",
@@ -167,6 +173,7 @@ const getUserData = async (username) => {
 
   const mapPolls = (polls) =>
     polls.map((poll) => ({
+      creator: poll.creator.username,
       pollId: poll._id,
       date: poll.date,
       question: poll.question,
@@ -248,6 +255,37 @@ const unfollow = async (userUnFollowing, userUnFollowed, io) => {
   return { message: "successfully unfollowed" };
 };
 
+const updateUserProfile = async (email, userData, io) => {
+  const user = await users.findOne({ email });
+  if (!user) {
+    throw new Error("User not found");
+  }
+
+  // Check if the new username already exists
+  const existingUsername = await users.findOne({ username: userData.username });
+  if (existingUsername && existingUsername.email !== email) {
+    return { status: 404, message: "Username already exists" };
+  }
+
+  // Check if the new email already exists
+  const existingEmail = await users.findOne({ email: userData.email });
+  if (existingEmail && existingEmail.email !== email) {
+    return { status: 404, message: "Email already exists" };
+  }
+
+  user.username = userData.username;
+  user.avatar = userData.avatar;
+  user.email = userData.email;
+  await user.save();
+
+  io.to(user._id.toString()).emit("updateProfile", {
+    username: userData.username,
+    avatar: userData.avatar,
+  });
+
+  return { message: "Successfully updated user profile" };
+};
+
 module.exports = {
   searchUser,
   verifyOtpService,
@@ -263,4 +301,5 @@ module.exports = {
   follow,
   unfollow,
   googleAuth,
+  updateUserProfile,
 };

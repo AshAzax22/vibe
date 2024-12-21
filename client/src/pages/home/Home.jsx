@@ -5,6 +5,7 @@ import { useSocket } from "../../components/SocketProvider";
 import { useState, useEffect } from "react";
 import { getUserData, getUser } from "./api";
 import Loading from "../../components/Loading";
+import { UserDataProvider } from "./components/UserDataProvider";
 
 const Home = ({ children }) => {
   const socket = useSocket();
@@ -27,7 +28,7 @@ const Home = ({ children }) => {
       if (response.ok) {
         const data = await response.json();
         setLoading(false);
-        setUserData(data);
+        setUserData({ ...data, email: localStorage.getItem("email") });
 
         if (socket) {
           socket.emit("join", data._id);
@@ -57,15 +58,29 @@ const Home = ({ children }) => {
     localStorage.setItem("username", userData.username);
   }, [userData]);
 
+  useEffect(() => {
+    if (socket) {
+      socket.on("updateProfile", ({ username, avatar }) => {
+        console.log("recieved update profile");
+        setUserData((prevData) => ({ ...prevData, username, avatar }));
+      });
+      return () => {
+        socket.off("updateProfile");
+      };
+    }
+  }, [socket]);
+
   if (loading) {
     return <Loading />;
   }
 
   return (
     <div className={styles.homeContainer}>
-      <Navbar username={userData.username} avatar={userData.avatar} />
-      {children}
-      <Trending />
+      <UserDataProvider userData={userData}>
+        <Navbar username={userData.username} avatar={userData.avatar} />
+        {children}
+        <Trending />
+      </UserDataProvider>
     </div>
   );
 };

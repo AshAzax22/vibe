@@ -1,0 +1,89 @@
+.avatarFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 8px auto;
+  width: fit-content;
+  gap: 16px;
+}
+
+.avatarFormContainer .title {
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.subContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: fit-content;
+}
+
+.avatarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: white;
+  border: 2px solid blue;
+}
+
+.avatarFormContainer button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.avatarFormContainer button:hover {
+  background-color: rgb(0, 0, 156);
+}
+
+.avatarFormContainer button:active {
+  background-color: blue;
+}
+
+.avatarOption {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: white;
+  border: 2px solid white;
+  transition: all 0.3s ease-in-out;
+}
+
+.avatarForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.avatarsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.avatarOption:hover {
+  background-color: blue;
+  cursor: pointer;
+}

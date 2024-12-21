@@ -14,6 +14,9 @@ const Profile = lazy(() => import("../pages/home/components/Profile/Profile"));
 const PollDetails = lazy(() =>
   import("../pages/home/components/Poll/PollDetails")
 );
+const Settings = lazy(() =>
+  import("../pages/home/components/Settings/Settings")
+);
 const NotFound = lazy(() => import("../components/NotFound"));
 
 export {
@@ -24,6 +27,7 @@ export {
   Feed,
   CreatePoll,
   Profile,
+  Settings,
   PollDetails,
   NotFound,
 };

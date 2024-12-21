@@ -182,6 +182,7 @@ const Profile = () => {
               <PollActivity
                 pollsCreated={userData.pollsCreated}
                 pollsVoted={userData.pollsVoted}
+                activeUser={activeUser}
               />
             ) : activeTab === "followers" ? (
               <FollowData usernames={userData.followers} title={"Followers"} />

@@ -15,6 +15,7 @@ import {
   Feed,
   CreatePoll,
   Profile,
+  Settings,
   PollDetails,
   NotFound,
 } from "./components/LazyComponents";
@@ -73,6 +74,16 @@ function App() {
                   <ProtectedRoute>
                     <Home>
                       <Profile />
+                    </Home>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/settings"
+                element={
+                  <ProtectedRoute>
+                    <Home>
+                      <Settings />
                     </Home>
                   </ProtectedRoute>
                 }

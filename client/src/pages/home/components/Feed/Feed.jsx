@@ -33,7 +33,6 @@ const Feed = () => {
         });
       });
 
-      // Clean up the socket event listener on component unmount
       return () => {
         socket.off("newPollCreated");
         socket.off("pollUpdate");

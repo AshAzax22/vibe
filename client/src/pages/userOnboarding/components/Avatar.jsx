@@ -13,7 +13,6 @@ const Avatar = ({
   const handleClick = () => {
     if (tab != "avatarSelector") {
       setFunction("avatarSelector");
-      console.log("clicked");
     } else {
       setFunction(avatar);
       setIndex(index);

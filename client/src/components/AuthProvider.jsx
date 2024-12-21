@@ -22,7 +22,8 @@ export const AuthProvider = ({ children }) => {
         },
       });
       if (!response.ok) {
-        console.log("backend verification failed");
+        localStorage.removeItem("token");
+        localStorage.removeItem("email");
         return false;
       }
       return true;

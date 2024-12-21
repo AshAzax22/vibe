@@ -1,16 +1,18 @@
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./css/navbar.module.css";
 import NavItem from "./components/NavItem";
 import homeIcon from "../../images/home.svg";
 import notificationIcon from "../../images/notification.svg";
 import addIcon from "../../images/add.svg";
 import settingsIcon from "../../images/settings.svg";
-import moreIcon from "../../images/more.svg";
 import closeIcon from "../../images/close.svg";
 import avatars from "../../../../assets/avatars";
 import LogOut from "./components/LogOut";
+import { useUserData } from "../UserDataProvider";
 
-const Navbar = ({ username, avatar }) => {
+const Navbar = () => {
+  const userData = useUserData();
+
   const [navState, setNavState] = useState(true);
   return (
     <>
@@ -35,20 +37,20 @@ const Navbar = ({ username, avatar }) => {
             itemName={"Notifications"}
             navState={navState}
           />
+
           <NavItem
-            icon={settingsIcon}
-            itemName={"Settings"}
-            navState={navState}
-          />
-          <NavItem
-            icon={avatars[avatar]}
-            itemName={username}
+            icon={avatars[userData.avatar]}
+            itemName={userData.username}
             navState={navState}
             kind={"avatar"}
           />
         </section>
         <section>
-          <NavItem icon={moreIcon} itemName={"More"} navState={navState} />
+          <NavItem
+            icon={settingsIcon}
+            itemName={"Settings"}
+            navState={navState}
+          />
           <LogOut navState={navState} />
         </section>
       </div>

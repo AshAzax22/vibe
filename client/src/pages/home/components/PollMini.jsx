@@ -42,8 +42,9 @@ const formatVoteCount = (votes) => {
   }
 };
 
-const PollMini = ({ data, remove }) => {
+const PollMini = ({ data, activeUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const remove = activeUser === data.creator;
 
   const openModal = () => {
     setIsModalOpen(true);

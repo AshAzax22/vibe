@@ -14,6 +14,7 @@ const {
   follow,
   unfollow,
   googleAuth,
+  updateUserProfile,
 } = require("../services/userServices");
 const {
   createPoll,
@@ -222,6 +223,16 @@ const createUserRoutes = (io) => {
     try {
       const result = await unfollow(userUnFollowing, userUnFollowed, io);
       return res.status(200).send(result);
+    } catch (err) {
+      sendErrorResponse(res, 400, err.message);
+    }
+  });
+
+  router.post("/updateuserprofile", async (req, res) => {
+    const { email, userData } = req.body;
+    try {
+      const result = await updateUserProfile(email, userData, io);
+      return res.status(result.status || 200).send(result);
     } catch (err) {
       sendErrorResponse(res, 400, err.message);
     }

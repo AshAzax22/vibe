@@ -148,3 +148,19 @@ export const unfollow = async (userUnFollowing, userUnFollowed) => {
     console.log(e);
   }
 };
+
+export const updateUserProfile = async (userData) => {
+  const email = localStorage.getItem("email");
+  try {
+    const response = await fetch(`${API_BASE_URL}/updateuserprofile`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, userData }),
+    });
+    return response;
+  } catch (e) {
+    console.log(e);
+  }
+};

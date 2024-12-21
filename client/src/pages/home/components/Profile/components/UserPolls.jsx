@@ -1,8 +1,7 @@
 import styles from "../css/userPolls.module.css";
 import PollMini from "../../PollMini";
 
-const UserPolls = ({ selectedTab, data }) => {
-  const remove = selectedTab === "pollsCreated" ? true : false;
+const UserPolls = ({ data, activeUser }) => {
   return (
     <>
       <div className={styles.pollsCreatedContainer}>
@@ -13,7 +12,7 @@ const UserPolls = ({ selectedTab, data }) => {
             <p>No polls yet.</p>
           ) : (
             data.map((poll, index) => (
-              <PollMini key={index} data={poll} remove={remove} />
+              <PollMini key={index} data={poll} activeUser={activeUser} />
             ))
           )}
         </div>

@@ -21,6 +21,12 @@ import SubmitButton from "./components/SubmitButton";
 import { useGoogleLogin } from "@react-oauth/google";
 
 const SignUp = () => {
+  useEffect(() => {
+    if (localStorage.getItem("email")) {
+      window.location.href = "/home";
+    }
+  }, []);
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -194,7 +200,6 @@ const SignUp = () => {
 
   const googleAuthorizer = useGoogleLogin({
     onSuccess: (tokenResponse) => {
-      console.log(tokenResponse); // Log the token response
       fetchUserData(tokenResponse.access_token); // Fetch user data
     },
   });
@@ -208,7 +213,6 @@ const SignUp = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("User Data:", data);
         googleLogin(data.email);
       })
       .catch((error) => {
