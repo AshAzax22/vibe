@@ -49,10 +49,12 @@
 }
 
 input {
+  width: 150px;
+  font-size: 14px;
   background-color: #4a4a4a;
   border: none;
-  padding: 1em;
-  border-radius: 5px;
+  padding: 16px;
+  border-radius: 6px;
   color: white;
 }
 
@@ -63,20 +65,11 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2px;
-}
-
-.alert img {
-  width: 16px;
-  height: 16px;
-}
-
-.overlay button {
-  font-size: 12px;
-  margin: 0;
+  margin: 6px auto;
 }
 
 .progressiveButton {
+  font-size: 12px;
   padding: 8px 32px;
   background-color: blue;
   color: white;

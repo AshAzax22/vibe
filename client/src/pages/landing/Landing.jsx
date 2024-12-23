@@ -10,7 +10,7 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className={styles.body}>
+    <div className={styles.landingContainer}>
       <p className={styles.brandName}>VIBE</p>
       <p className={styles.brief}>
         Join the buzz, set the trends, and see where you stand. VIBE is your

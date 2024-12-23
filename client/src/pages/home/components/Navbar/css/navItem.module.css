@@ -24,12 +24,9 @@
   border-radius: 12px;
 }
 
-.navItemContainer p {
+.itemName {
   display: flex;
   align-items: center;
-}
-
-.itemName {
   overflow: hidden;
   height: 24px;
   font-size: 16px;

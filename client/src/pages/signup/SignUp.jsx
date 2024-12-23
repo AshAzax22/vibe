@@ -246,7 +246,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className={styles.body}>
+    <div className={styles.signupContainer}>
       <div className={styles.muralContainer}>
         <img src={mural} alt="mural" className={styles.mural} />
       </div>
