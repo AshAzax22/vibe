@@ -40,3 +40,10 @@
     width: fit-content;
   }
 }
+
+@media (max-width: 426px) {
+  .navItemContainer img {
+    width: 20px;
+    height: 20px;
+  }
+}

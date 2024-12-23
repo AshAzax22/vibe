@@ -79,3 +79,13 @@
     gap: 64px;
   }
 }
+
+@media (max-width: 426px) {
+  .navContainer {
+    padding: 8px;
+    gap: 18px;
+  }
+  .navContainer section {
+    gap: 18px;
+  }
+}
