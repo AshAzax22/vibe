@@ -33,3 +33,10 @@
   line-height: 16px;
   transition: all 0.3s ease-in-out;
 }
+
+@media (max-width: 769px) {
+  .navItemContainer p {
+    display: none;
+    width: fit-content;
+  }
+}

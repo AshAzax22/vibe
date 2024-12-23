@@ -45,16 +45,6 @@ const NavItem = ({ icon, itemName, navState, kind }) => {
           {itemName}
         </p>
       </div>
-
-      {/* <Modal
-        title="Confirm Log Out"
-        description="Are you sure you want to log out?"
-        negative="Cancel"
-        positive="Log Out"
-        isOpen={isModelOpen}
-        onClose={closeModal}
-        onConfirm={confirmLogOut}
-      /> */}
     </>
   );
 };

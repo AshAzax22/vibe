@@ -51,3 +51,31 @@
 .icon {
   transition: all 0.3s ease-in-out;
 }
+
+@media (max-width: 768px) {
+  .navContainer {
+    border-top-left-radius: 16px;
+    border-bottom-right-radius: 0px;
+    gap: 64px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    position: fixed;
+    width: auto;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+  }
+  .navHead {
+    display: none;
+  }
+
+  .navContainer section {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    gap: 64px;
+  }
+}
