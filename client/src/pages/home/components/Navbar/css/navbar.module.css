@@ -83,9 +83,9 @@
 @media (max-width: 426px) {
   .navContainer {
     padding: 8px;
-    gap: 18px;
+    gap: 16px;
   }
   .navContainer section {
-    gap: 18px;
+    gap: 16px;
   }
 }
