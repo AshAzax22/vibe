@@ -1,8 +1,10 @@
 .homeContainer {
   display: flex;
   background-color: #2d2d2d;
+  height: 100dvh;
   width: 100%;
   position: relative;
   justify-content: space-between;
   overflow: scroll;
+  gap: 24px;
 }

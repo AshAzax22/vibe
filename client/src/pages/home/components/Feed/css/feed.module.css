@@ -5,13 +5,14 @@
   margin: 12px auto;
 }
 .feedContainer {
-  margin: 0 24px;
   padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: 100dvh;
   background-color: black;
+  overflow: scroll;
 }
 
 .loadingContainer {
