@@ -117,4 +117,7 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
+
+  /* filter: invert(70%) sepia(100%) saturate(10000%) hue-rotate(0deg)
+    brightness(70%) contrast(100%); */
 }

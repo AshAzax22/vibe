@@ -85,6 +85,7 @@ const checkVoted = async (poll, email) => {
 const getPolls = async (email) => {
   let pollsArray = await polls
     .find()
+    .sort({ date: -1 })
     .populate({
       path: "options",
       select: "text voters _id",
