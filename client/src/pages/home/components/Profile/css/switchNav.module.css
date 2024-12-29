@@ -29,3 +29,13 @@
 .selected:hover {
   background-color: black;
 }
+
+@media (max-width: 768px) {
+  .switchNavContainer {
+    gap: 8px;
+  }
+  .tab {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}

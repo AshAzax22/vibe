@@ -9,3 +9,9 @@
   justify-content: flex-start;
   overflow-x: hidden;
 }
+
+@media (max-width: 768px) {
+  .userPollsContainer {
+    width: 95%;
+  }
+}

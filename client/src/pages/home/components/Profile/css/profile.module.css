@@ -82,3 +82,9 @@
   background-color: #535353;
   color: white;
 }
+
+@media (max-width: 768px) {
+  .profileContainer {
+    margin: 0px;
+  }
+}

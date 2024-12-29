@@ -73,7 +73,6 @@ const CreatePoll = () => {
       <div className={styles.createPollContainer}>
         <div className={styles.title}>Create a Poll</div>
         <div className={styles.inputContainer}>
-          <h1>Enter Your Question :</h1>
           <input
             type="text"
             placeholder="Be creative"

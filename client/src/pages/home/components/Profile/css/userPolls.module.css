@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .subContainer {
@@ -11,4 +12,10 @@
   padding: 4px;
   justify-content: center;
   width: 90%;
+}
+
+@media (max-width: 768px) {
+  .subContainer {
+    width: 100%;
+  }
 }
