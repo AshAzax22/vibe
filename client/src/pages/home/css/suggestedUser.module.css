@@ -66,3 +66,23 @@
   height: 20px;
   margin-right: 10px;
 }
+@media (max-width: 426px) {
+  .suggestedUserContainer {
+    gap: 8px;
+    padding: 2px;
+  }
+  .userInfo {
+    width: auto;
+    flex: 1;
+  }
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+  .progressiveButton {
+    padding: 6px 12px;
+  }
+  .icon {
+    display: none;
+  }
+}

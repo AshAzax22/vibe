@@ -2,7 +2,9 @@
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./db/db");
+const authRoutes = require("./routes/authRoutes");
 const createUserRoutes = require("./routes/userRoutes");
+const createPollRoutes = require("./routes/pollRoutes");
 const initializeSocket = require("./socket/socket");
 const http = require("http");
 
@@ -29,8 +31,10 @@ app.get("/", (req, res) => {
   res.send("Welcome to the API server.");
 });
 
-// Use user routes
+// Use routes
+app.use("/", authRoutes);
 app.use("/", createUserRoutes(io));
+app.use("/", createPollRoutes(io));
 
 io.on("connection", (socket) => {
   console.log("user connected : ", socket.id);

@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Trending from "./components/Trending/Trending";
 import { useSocket } from "../../components/SocketProvider";
 import { useState, useEffect } from "react";
-import { getUserData, getUser } from "./api";
+import { getUserData, getUser } from "../../api";
 import Loading from "../../components/Loading";
 import { UserDataProvider } from "./components/UserDataProvider";
 

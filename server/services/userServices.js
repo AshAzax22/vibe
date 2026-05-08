@@ -286,6 +286,32 @@ const updateUserProfile = async (email, userData, io) => {
   return { message: "Successfully updated user profile" };
 };
 
+const getTrendingUsers = async () => {
+  const trendingUsers = await users
+    .find()
+    .sort({ followers: -1 })
+    .limit(10)
+    .select("username avatar followers");
+
+  return trendingUsers.map((user) => ({
+    username: user.username,
+    avatar: user.avatar,
+    followCount: user.followers.length,
+  }));
+};
+
+const searchUsers = async (query) => {
+  const searchResults = await users
+    .find({ username: { $regex: query, $options: "i" } })
+    .select("username avatar followers");
+
+  return searchResults.map((user) => ({
+    username: user.username,
+    avatar: user.avatar,
+    followCount: user.followers.length,
+  }));
+};
+
 module.exports = {
   searchUser,
   verifyOtpService,
@@ -302,4 +328,6 @@ module.exports = {
   unfollow,
   googleAuth,
   updateUserProfile,
+  getTrendingUsers,
+  searchUsers,
 };

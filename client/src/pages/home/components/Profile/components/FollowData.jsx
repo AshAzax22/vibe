@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import styles from "../css/followData.module.css";
 import UserMini from "../../UserMini";
-import { getUserData } from "../../../api";
-import Loader from "../../Loader";
+import { getUserData } from "../../../../../api";
+import Loader from "../../../../../components/ui/Loader";
 
 const FollowData = ({ usernames, title }) => {
   const [users, setUsers] = useState([]);

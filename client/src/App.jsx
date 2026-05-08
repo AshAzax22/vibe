@@ -17,6 +17,9 @@ import {
   Profile,
   Settings,
   PollDetails,
+  Saved,
+  Notifications,
+  Search,
   NotFound,
 } from "./components/LazyComponents";
 
@@ -98,6 +101,36 @@ function App() {
                   </ProtectedRoute>
                 }
               ></Route>
+              <Route
+                path="/saved"
+                element={
+                  <ProtectedRoute>
+                    <Home>
+                      <Saved />
+                    </Home>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/notifications"
+                element={
+                  <ProtectedRoute>
+                    <Home>
+                      <Notifications />
+                    </Home>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/search"
+                element={
+                  <ProtectedRoute>
+                    <Home>
+                      <Search />
+                    </Home>
+                  </ProtectedRoute>
+                }
+              />
 
               <Route path="*" element={<NotFound />} />
             </Routes>

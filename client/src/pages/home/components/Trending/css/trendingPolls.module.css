@@ -6,10 +6,12 @@
 }
 
 .trendingPollsContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
+
 .subContainer {
   display: flex;
   flex-direction: column;

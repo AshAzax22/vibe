@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../css/navItem.module.css";
 import { useState } from "react";
-import Modal from "../../Modal";
-import icon from "../../../images/log out.svg";
+import Modal from "../../../../../components/ui/Modal";
+import icon from "../../../../../assets/images/log out.svg";
 import { useNavigate } from "react-router-dom";
 
 const LogOut = ({ navState }) => {

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "../css/pollMini.module.css";
-import trash from "../images/trash.svg";
-import { deletePoll } from "../api";
+import trash from "../../../assets/images/trash.svg";
+import { deletePoll } from "../../../api";
 import { useNavigate } from "react-router-dom";
-import Modal from "./Modal";
+import Modal from "../../../components/ui/Modal";
 
 const formatTimeDifference = (uploaded) => {
   const now = new Date();
@@ -33,6 +33,7 @@ const formatTimeDifference = (uploaded) => {
 };
 
 const formatVoteCount = (votes) => {
+  if (votes === undefined || votes === null) return "0";
   if (votes >= 1000000) {
     return (votes / 1000000).toFixed(1) + "M";
   } else if (votes >= 1000) {
@@ -72,6 +73,10 @@ const PollMini = ({ data, activeUser }) => {
       console.log("error");
     }
   };
+  const totalVotes = data.options
+    ? data.options.reduce((acc, opt) => acc + (opt.voteCount || 0), 0)
+    : data.votes || 0;
+
   return (
     <>
       <div className={styles.trendingPollContainer} onClick={handleNavigate}>
@@ -83,7 +88,7 @@ const PollMini = ({ data, activeUser }) => {
                 {formatTimeDifference(data.date)}
               </div>
               <div className={styles.votes}>
-                {formatVoteCount(data.votes)} votes
+                {formatVoteCount(totalVotes)} votes
               </div>
             </div>
           </div>

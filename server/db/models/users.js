@@ -37,6 +37,12 @@ const userSchema = new mongoose.Schema({
       ref: "users",
     },
   ],
+  savedPolls: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "polls",
+    },
+  ],
 });
 
 module.exports = mongoose.model("users", userSchema);

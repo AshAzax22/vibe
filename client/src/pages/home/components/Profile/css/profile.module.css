@@ -86,5 +86,21 @@
 @media (max-width: 768px) {
   .profileContainer {
     margin: 0px;
+    padding-top: 70px;
+    padding-bottom: 80px;
   }
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Hide scrollbar but keep functionality */
+.profileContainer::-webkit-scrollbar {
+  display: none;
+}
+.profileContainer {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: auto;
 }

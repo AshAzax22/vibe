@@ -6,7 +6,7 @@ import Tips from "./components/Tips";
 import defaultAvatar from "../../assets/avatars/Preview.png";
 import AvatarMenu from "./components/AvatarMenu";
 import { useAuth } from "../../components/AuthProvider";
-import { searchUser, setUserProfile } from "./api";
+import { searchUsername, setUserProfile } from "../../api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const UserOnboarding = () => {

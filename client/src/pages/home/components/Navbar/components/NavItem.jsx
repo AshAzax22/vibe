@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "../css/navItem.module.css";
 import { useNavigate } from "react-router-dom";
-import Modal from "../../Modal";
+import Modal from "../../../../../components/ui/Modal";
 
 const NavItem = ({ icon, itemName, navState, kind }) => {
   const navigate = useNavigate();
@@ -16,6 +16,8 @@ const NavItem = ({ icon, itemName, navState, kind }) => {
       ? setNavTo("/notifications")
       : itemName === "Settings"
       ? setNavTo("/settings")
+      : itemName === "Saved"
+      ? setNavTo("/saved")
       : setNavTo(`/profile/${itemName}`);
   });
 

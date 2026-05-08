@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSocket } from "../../../../components/SocketProvider";
 import styles from "./css/feed.module.css";
-import Loader from "../Loader";
+import Loader from "../../../../components/ui/Loader";
 import Poll from "../Poll";
-import { getPolls } from "../../api";
+import { getPolls } from "../../../../api";
 const Feed = () => {
   const [polls, setPolls] = useState([]);
   const [fetchingPolls, setFetchingPolls] = useState(false);

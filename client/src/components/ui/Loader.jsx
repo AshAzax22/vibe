@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../css/loader.module.css";
+import styles from "./loader.module.css";
 const Loader = () => {
   return (
     <div className={styles.dotWave}>

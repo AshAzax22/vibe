@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../css/trendingPersonalities.module.css";
 import UserMini from "../../UserMini";
 
+import { getTrendingUsers } from "../../../../../api";
+
 const TrendingPersonalities = () => {
-  const userlist = [
-    { name: "John Doe", followCount: 1200 },
-    { name: "Jane Smith", followCount: 1500 },
-    { name: "Alice Johnson", followCount: 900 },
-    { name: "Bob Brown", followCount: 1100 },
-    { name: "Charlie Davis", followCount: 1300 },
-    { name: "Diana Evans", followCount: 1400 },
-  ];
+  const [userlist, setUserlist] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getTrendingUsers().then((res) => {
+      if (res && res.ok) {
+        res.json().then((data) => {
+          setUserlist(data);
+          setLoading(false);
+        });
+      } else {
+        setLoading(false);
+      }
+    });
+  }, []);
 
   return (
     <>
@@ -22,8 +31,9 @@ const TrendingPersonalities = () => {
             {userlist.map((user, index) => (
               <UserMini
                 key={index}
-                username={user.name}
+                username={user.username}
                 followCount={user.followCount}
+                avatar={user.avatar}
               />
             ))}
           </div>

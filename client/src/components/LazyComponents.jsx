@@ -17,6 +17,11 @@ const PollDetails = lazy(() =>
 const Settings = lazy(() =>
   import("../pages/home/components/Settings/Settings")
 );
+const Saved = lazy(() => import("../pages/home/components/Saved"));
+const Notifications = lazy(() =>
+  import("../pages/home/components/Notifications")
+);
+const Search = lazy(() => import("../pages/home/components/Search"));
 const NotFound = lazy(() => import("../components/NotFound"));
 
 export {
@@ -29,5 +34,8 @@ export {
   Profile,
   Settings,
   PollDetails,
+  Saved,
+  Notifications,
+  Search,
   NotFound,
 };

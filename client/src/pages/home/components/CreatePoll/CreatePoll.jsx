@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./css/createPoll.module.css";
-import { createPoll } from "../../api";
+import { createPoll } from "../../../../api";
 import PopUp from "../PopUp";
 
 const CreatePoll = () => {

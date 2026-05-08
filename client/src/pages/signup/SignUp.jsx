@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./css/signUp.module.css";
-import mural from "./images/image.png";
+import mural from "../../assets/images/image.png";
 import { useNavigate } from "react-router-dom";
 import {
   searchUser,
@@ -10,14 +10,14 @@ import {
   signUp,
   requestOtp,
   googleAuthLogin,
-} from "./api";
-import EmailInput from "./components/EmailInput";
-import PasswordInput from "./components/PasswordInput";
-import OtpInput from "./components/OtpInput";
-import GoogleAuthButton from "./components/GoogleAuthButton";
-import BackArrow from "./components/BackArrow";
-import ErrorMessage from "./components/ErrorMessage";
-import SubmitButton from "./components/SubmitButton";
+} from "../../api";
+import EmailInput from "../../components/ui/EmailInput";
+import PasswordInput from "../../components/ui/PasswordInput";
+import OtpInput from "../../components/ui/OtpInput";
+import GoogleAuthButton from "../../components/ui/GoogleAuthButton";
+import BackArrow from "../../components/ui/BackArrow";
+import ErrorMessage from "../../components/ui/ErrorMessage";
+import SubmitButton from "../../components/ui/SubmitButton";
 import { useGoogleLogin } from "@react-oauth/google";
 
 const SignUp = () => {

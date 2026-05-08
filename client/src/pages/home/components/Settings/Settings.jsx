@@ -3,7 +3,7 @@ import styles from "./settings.module.css";
 import { useUserData } from "../UserDataProvider";
 import AvatarForm from "./components/AvatarForm";
 import _ from "lodash";
-import { updateUserProfile } from "../../api";
+import { updateUserProfile } from "../../../../api";
 import PopUp from "../PopUp";
 
 const Settings = () => {

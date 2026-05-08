@@ -5,6 +5,30 @@
   width: 100%;
   position: relative;
   justify-content: space-between;
-  overflow: scroll;
-  gap: 48px;
+  overflow: auto;
+  gap: 24px;
+}
+
+@media (max-width: 1100px) {
+  .homeContainer {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homeContainer {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    overflow-x: hidden;
+  }
+}
+
+/* Hide scrollbar but keep functionality */
+.homeContainer::-webkit-scrollbar {
+  display: none;
+}
+.homeContainer {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

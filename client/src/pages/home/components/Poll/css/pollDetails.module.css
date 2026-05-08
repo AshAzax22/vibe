@@ -13,6 +13,15 @@
   width: 100%;
   background-color: black;
   color: white;
+  min-height: 100dvh;
+}
+
+@media (max-width: 768px) {
+  .pollDetailsContainer {
+    margin: 0;
+    padding-top: 70px;
+    padding-bottom: 80px;
+  }
 }
 
 .loadingContainer {

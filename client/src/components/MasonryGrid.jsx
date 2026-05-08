@@ -2,30 +2,30 @@ import VerticalCarousel from "./verticalCarousel";
 import styles from "./css/masonryGrid.module.css";
 
 // Import images
-import image1 from "./images/image 2.jpg";
-import image2 from "./images/image 3.jpg";
-import image3 from "./images/image 4.jpg";
-import image4 from "./images/image 5.jpg";
-import image5 from "./images/image 6.jpg";
-import image6 from "./images/image 7.jpg";
-import image7 from "./images/image 8.jpg";
-import image8 from "./images/image 9.jpg";
-import image9 from "./images/image 10.jpg";
-import image10 from "./images/image 11.jpg";
-import image11 from "./images/image 12.jpg";
-import image12 from "./images/image 13.jpg";
-import image13 from "./images/image 14.jpg";
-import image14 from "./images/image 15.jpg";
-import image15 from "./images/image 16.jpg";
-import image16 from "./images/image 17.jpg";
-import image17 from "./images/image 18.jpg";
-import image18 from "./images/image 19.jpg";
-import image19 from "./images/image 20.jpg";
-import image20 from "./images/image 21.jpg";
-import image21 from "./images/image 22.jpg";
-import image22 from "./images/image 23.jpg";
-import image23 from "./images/image 24.jpg";
-import image24 from "./images/image 25.jpg";
+import image1 from "../assets/images/image 2.jpg";
+import image2 from "../assets/images/image 3.jpg";
+import image3 from "../assets/images/image 4.jpg";
+import image4 from "../assets/images/image 5.jpg";
+import image5 from "../assets/images/image 6.jpg";
+import image6 from "../assets/images/image 7.jpg";
+import image7 from "../assets/images/image 8.jpg";
+import image8 from "../assets/images/image 9.jpg";
+import image9 from "../assets/images/image 10.jpg";
+import image10 from "../assets/images/image 11.jpg";
+import image11 from "../assets/images/image 12.jpg";
+import image12 from "../assets/images/image 13.jpg";
+import image13 from "../assets/images/image 14.jpg";
+import image14 from "../assets/images/image 15.jpg";
+import image15 from "../assets/images/image 16.jpg";
+import image16 from "../assets/images/image 17.jpg";
+import image17 from "../assets/images/image 18.jpg";
+import image18 from "../assets/images/image 19.jpg";
+import image19 from "../assets/images/image 20.jpg";
+import image20 from "../assets/images/image 21.jpg";
+import image21 from "../assets/images/image 22.jpg";
+import image22 from "../assets/images/image 23.jpg";
+import image23 from "../assets/images/image 24.jpg";
+import image24 from "../assets/images/image 25.jpg";
 
 // Add more image imports as needed
 

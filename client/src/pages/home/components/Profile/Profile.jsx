@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import avatars from "../../../../assets/avatars.js";
 import Stats from "./components/Stats.jsx";
 import PollActivity from "./components/PollActivity.jsx";
-import { getUserData, follow, unfollow } from "../../api.js";
+import { getUserData, follow, unfollow } from "../../../../api";
 import { useSocket } from "../../../../components/SocketProvider.jsx";
-import Loader from "../Loader.jsx";
+import Loader from "../../../../components/ui/Loader";
 import FollowData from "./components/FollowData.jsx";
 const Profile = () => {
   const { username } = useParams();

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../css/signUp.module.css";
+import styles from "../../pages/signup/css/signUp.module.css";
 
 const SubmitButton = ({ loading, onClick }) => (
   <button className={styles.letsGo} disabled={loading} onClick={onClick}>

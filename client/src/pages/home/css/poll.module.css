@@ -10,6 +10,15 @@
   color: white;
 }
 
+@media (max-width: 768px) {
+  .pollContainer {
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 0;
+  }
+}
+
 .profile {
   width: 40px;
   height: 40px;
@@ -117,7 +126,163 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
+}
 
-  /* filter: invert(70%) sepia(100%) saturate(10000%) hue-rotate(0deg)
-    brightness(70%) contrast(100%); */
+.commentsSection {
+  margin-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.commentInputContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px 12px;
+  border-radius: 24px;
+}
+
+.commentInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  outline: none;
+}
+
+.sendButton {
+  background: white;
+  color: black;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.commentList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.commentItem {
+  display: flex;
+  gap: 12px;
+}
+
+.profile:hover {
+  background-color: blue;
+}
+
+.commentAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: white;
+  object-fit: cover;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.commentAvatar:hover {
+  background-color: blue;
+}
+
+.commentContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commentUser {
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.commentUser:hover {
+  text-decoration: underline;
+}
+
+.commentText {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.4;
+}
+
+.commentActions {
+  display: flex;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.actionButton {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.actionButton:hover {
+  color: white;
+}
+
+.repliesContainer {
+  margin-left: 20px;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.replyItem {
+  display: flex;
+  gap: 10px;
+}
+
+.replyItem .commentAvatar {
+  width: 24px;
+  height: 24px;
+}
+
+.replyItem .commentUser {
+  font-size: 13px;
+}
+
+.replyItem .commentText {
+  font-size: 13px;
+}
+
+.replyInputContainer {
+  margin-left: 44px;
+  margin-top: 8px;
+}
+
+.deleteIcon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.deleteIcon:hover {
+  opacity: 1;
 }

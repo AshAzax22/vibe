@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./css/pollDetails.module.css";
 import { useSocket } from "../../../../components/SocketProvider";
-import Loader from "../Loader";
+import Loader from "../../../../components/ui/Loader";
 import Poll from "../Poll";
-import { getPoll } from "../../api";
+import { getPoll } from "../../../../api";
+
 const PollDetails = () => {
   const { pollId } = useParams();
   const [poll, setPoll] = useState({});
@@ -23,11 +24,11 @@ const PollDetails = () => {
       });
     });
 
-    const fetchPoll = async () => {
+    const fetchPollData = async () => {
       try {
-        const response = await getPoll(pollId);
-        if (response.ok) {
-          const data = await response.json();
+        const pollRes = await getPoll(pollId);
+        if (pollRes.ok) {
+          const data = await pollRes.json();
           setPoll(data);
           setLoading(false);
         } else {
@@ -39,19 +40,19 @@ const PollDetails = () => {
         setLoading(false);
       }
     };
-    fetchPoll();
+    fetchPollData();
 
     return () => {
       socket.off("pollUpdate");
     };
-  }, [socket]);
+  }, [socket, pollId]);
 
   return (
     <>
       <div className={styles.pollDetailsContainer}>
-        <h1 className={styles.title}>Polls Page</h1>
+        <h1 className={styles.title}>Poll Feed</h1>
         {!found ? (
-          <p>Poll not found</p>
+          <p className={styles.emptyMessage}>Poll not found</p>
         ) : loading ? (
           <div className={styles.loadingContainer}>
             <Loader />
@@ -68,6 +69,7 @@ const PollDetails = () => {
               poll.selectedIndex !== undefined ? poll.selectedIndex : null
             }
             uploadDate={poll.date}
+            initiallyShowComments={true}
           />
         )}
       </div>
