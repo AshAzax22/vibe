@@ -34,10 +34,14 @@
   transition: all 0.3s ease-in-out;
 }
 
-@media (max-width: 769px) {
+@media (max-width: 1024px) {
+  .navItemContainer {
+    padding: 10px;
+    gap: 0 !important;
+  }
+
   .navItemContainer p {
     display: none;
-    width: fit-content;
   }
 }
 

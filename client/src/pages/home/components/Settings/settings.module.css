@@ -10,12 +10,14 @@
   color: white;
   overflow-y: scroll;
 }
+
 .title {
   color: white;
   font-size: 24px;
   font-weight: 900;
   margin: 12px auto;
 }
+
 .inputContainer {
   width: 400px;
   display: flex;
@@ -24,6 +26,7 @@
   align-items: center;
   gap: 24px;
 }
+
 .inputContainer .title {
   text-align: center;
   color: white;
@@ -32,7 +35,7 @@
   margin: 0;
 }
 
-.inputContainer > div {
+.inputContainer>div {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -44,6 +47,7 @@
   font-size: 14px;
   font-weight: 600;
 }
+
 .inputContainer input {
   text-align: center;
   width: 250px;
@@ -55,16 +59,19 @@
   transition: all 0.3s ease-in-out;
   cursor: url("../../../../assets/images/edit.svg"), auto;
 }
+
 .inputContainer input:focus {
   background-color: rgb(39, 39, 39);
   padding: 12px;
   outline: none;
   cursor: text;
 }
+
 .inputContainer .subContainer {
   display: flex;
   gap: 8px;
 }
+
 .inputContainer .subContainer button {
   border-radius: 4px;
   padding: 6px;
@@ -122,8 +129,30 @@
   text-align: center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .settingsContainer {
     margin: 0px;
   }
+}
+
+.logoutSection {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.logoutSection p {
+  display: flex !important;
+  color: red;
+  font-weight: 700;
+}
+
+.divider {
+  width: 80%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 24px;
 }

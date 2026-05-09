@@ -83,6 +83,12 @@ const checkVoted = async (poll, email) => {
   return selectedIndex;
 };
 
+const checkSaved = async (pollId, email) => {
+  const user = await users.findOne({ email });
+  if (!user) return false;
+  return user.savedPolls.includes(pollId);
+};
+
 const getPolls = async (email) => {
   let pollsArray = await polls
     .find()
@@ -100,10 +106,8 @@ const getPolls = async (email) => {
     pollsArray = await Promise.all(
       pollsArray.map(async (poll) => {
         const selectedIndex = await checkVoted(poll, email);
-        if (selectedIndex !== -1) {
-          return { ...poll, selectedIndex };
-        }
-        return poll;
+        const isSaved = await checkSaved(poll.pollId, email);
+        return { ...poll, selectedIndex: selectedIndex !== -1 ? selectedIndex : null, isSaved };
       })
     );
   }
@@ -200,11 +204,12 @@ const getPoll = async (pollId, email) => {
     .populate("creator", "username avatar _id");
 
   const selectedIndex = await checkVoted(poll, email);
-  if (selectedIndex !== -1) {
-    return { ...transformPoll(poll), selectedIndex };
-  }
-
-  return transformPoll(poll);
+  const isSaved = await checkSaved(pollId, email);
+  return { 
+    ...transformPoll(poll), 
+    selectedIndex: selectedIndex !== -1 ? selectedIndex : null, 
+    isSaved 
+  };
 };
 
 const getTrendingPolls = async (email) => {
@@ -228,10 +233,8 @@ const getTrendingPolls = async (email) => {
     pollsArray = await Promise.all(
       pollsArray.map(async (poll) => {
         const selectedIndex = await checkVoted(poll, email);
-        if (selectedIndex !== -1) {
-          return { ...poll, selectedIndex };
-        }
-        return poll;
+        const isSaved = await checkSaved(poll.pollId, email);
+        return { ...poll, selectedIndex: selectedIndex !== -1 ? selectedIndex : null, isSaved };
       })
     );
   }
@@ -255,10 +258,8 @@ const searchPolls = async (query, email) => {
     pollsArray = await Promise.all(
       pollsArray.map(async (poll) => {
         const selectedIndex = await checkVoted(poll, email);
-        if (selectedIndex !== -1) {
-          return { ...poll, selectedIndex };
-        }
-        return poll;
+        const isSaved = await checkSaved(poll.pollId, email);
+        return { ...poll, selectedIndex: selectedIndex !== -1 ? selectedIndex : null, isSaved };
       })
     );
   }

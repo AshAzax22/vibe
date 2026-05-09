@@ -3,6 +3,7 @@ import styles from "../css/poll.module.css";
 import { poll, savePoll, unsavePoll, getComments, addComment, deleteComment } from "../../../api";
 import comment from "../../../assets/images/comment.svg";
 import saveIcon from "../../../assets/images/save.svg";
+import saveFilled from "../../../assets/images/saveFilled.svg";
 import more from "../../../assets/images/moreVertical.svg";
 import trash from "../../../assets/images/trash.svg";
 import avatars from "../../../assets/avatars";
@@ -260,13 +261,13 @@ const Poll = ({
         <div>
           <img src={comment} alt="comment" className={styles.icon} onClick={handleCommentToggle} />
           <img
-            src={saveIcon}
+            src={isSaved ? saveFilled : saveIcon}
             alt="save"
             className={styles.icon}
             onClick={handleSave}
             style={{
               filter: isSaved
-                ? "invert(21%) sepia(100%) saturate(7414%) hue-rotate(359deg) brightness(101%) contrast(115%)"
+                ? "invert(54%) sepia(95%) saturate(3025%) hue-rotate(188deg) brightness(103%) contrast(101%)"
                 : "none",
             }}
           />

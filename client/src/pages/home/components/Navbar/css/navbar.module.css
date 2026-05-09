@@ -14,7 +14,14 @@
   z-index: 1000;
 }
 
-.navContainer section {
+.navContainer .mainNav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: auto;
+}
+
+.navContainer .secondaryNav {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -52,50 +59,55 @@
   transition: all 0.3s ease-in-out;
 }
 
+.searchContainer {
+  padding: 8px;
+  margin-top: 16px;
+  transition: all 0.3s ease-in-out;
+}
 
-.searchContainer .searchInput {
+.searchInput {
   box-sizing: border-box;
   width: 100%;
-  padding: 12px 12px;
+  padding: 14px 16px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: 14px;
   outline: none;
+  transition: all 0.3s ease;
   border: none;
+}
+
+.searchInput:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid blue;
+}
+
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .topBar {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   background-color: black;
-  padding: 8px 16px;
+  padding: 10px 16px;
   z-index: 1001;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 16px;
+  backdrop-filter: blur(10px);
 }
 
 .mobileSearchContainer {
   flex: 1;
+  max-width: 600px;
 }
 
 @media (max-width: 1024px) {
-  .navContainer {
-    width: 80px;
-    padding: 16px 8px;
-  }
-  .brandName {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
   .topBar {
     display: flex;
   }
@@ -104,6 +116,7 @@
     border-top-left-radius: 16px;
     border-bottom-right-radius: 0px;
     gap: 0;
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -116,22 +129,36 @@
     right: 0;
     padding: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 16px;
   }
 
-  .navHead, .searchContainer {
-    display: none;
+  .navHead,
+  .searchContainer {
+    display: none !important;
   }
 
-  .mainNav {
+  .navContainer .mainNav {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    gap: 16px;
+  }
+
+  .navContainer .secondaryNav {
     display: flex;
     flex-direction: row;
     margin: 0;
-    gap: 0;
-    width: 100%;
-    justify-content: space-around;
+    padding: 0;
   }
 
-  .secondaryNav {
+  .brandName {
+    display: none;
+  }
+
+  .logoutWrapper {
     display: none;
   }
 }
@@ -140,11 +167,14 @@
   .navContainer {
     height: 60px;
   }
+
   .topBar {
     padding: 6px 12px;
   }
+
   .brandName {
     font-size: 14px;
-    display: block; /* Show VIBE logo on top bar for small mobile */
+    display: block;
+    /* Show VIBE logo on top bar for small mobile */
   }
 }

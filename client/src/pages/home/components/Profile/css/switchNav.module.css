@@ -30,10 +30,11 @@
   background-color: black;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .switchNavContainer {
     gap: 8px;
   }
+
   .tab {
     padding: 8px 12px;
     font-size: 14px;

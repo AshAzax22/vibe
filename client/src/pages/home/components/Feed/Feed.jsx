@@ -59,7 +59,8 @@ const Feed = () => {
           </div>
         ) : (
           <>
-            {polls.map((poll, index) => {
+            <div className={styles.pollListContainer}>
+              {polls.map((poll, index) => {
               return (
                 <Poll
                   pollId={poll.pollId}
@@ -72,6 +73,7 @@ const Feed = () => {
                     poll.selectedIndex !== undefined ? poll.selectedIndex : null
                   }
                   uploadDate={poll.date}
+                  saved={poll.isSaved || false}
                 />
               );
             })}
@@ -80,6 +82,7 @@ const Feed = () => {
                 ? "No Polls to Show"
                 : "Your have vibed with everything"}
             </h1>
+            </div>
           </>
         )}
       </div>

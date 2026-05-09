@@ -92,6 +92,7 @@ const CreatePoll = () => {
               <button
                 onClick={() => removeOption(index)}
                 className={styles.removeOptionButton}
+                disabled={optionsArray.length === 1}
               >
                 Remove
               </button>

@@ -30,8 +30,9 @@ const Saved = () => {
         </div>
       ) : polls.length === 0 ? (
         <p className={styles.emptyMessage}>You haven't saved any polls yet.</p>
-      ) : (
-        polls.map((poll, index) => (
+      ) :(
+        <div className={styles.pollListContainer}>
+          {polls.map((poll, index) => (
           <Poll
             key={index}
             pollId={poll.pollId}
@@ -41,9 +42,12 @@ const Saved = () => {
             options={poll.options}
             selected={poll.selectedIndex !== undefined ? poll.selectedIndex : null}
             uploadDate={poll.date}
+            saved={true}
           />
-        ))
-      )}
+        ))}
+        </div>
+      ) 
+      }
     </div>
   );
 };

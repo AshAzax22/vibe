@@ -4,6 +4,7 @@
   font-weight: 900;
   margin: 12px auto;
 }
+
 .pollDetailsContainer {
   margin: 0 24px;
   padding: 16px;
@@ -16,7 +17,7 @@
   min-height: 100dvh;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .pollDetailsContainer {
     margin: 0;
     padding-top: 70px;

@@ -5,6 +5,7 @@ import AvatarForm from "./components/AvatarForm";
 import _ from "lodash";
 import { updateUserProfile } from "../../../../api";
 import PopUp from "../PopUp";
+import LogOut from "../Navbar/components/LogOut";
 
 const Settings = () => {
   const currentData = useUserData();
@@ -85,6 +86,10 @@ const Settings = () => {
           {loading ? "Saving..." : "Save"}
         </button>
       )}
+      <div className={styles.logoutSection}>
+        <div className={styles.divider}></div>
+        <LogOut navState={true} />
+      </div>
     </div>
   );
 };

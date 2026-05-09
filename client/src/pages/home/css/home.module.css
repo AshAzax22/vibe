@@ -15,7 +15,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .homeContainer {
     flex-direction: column;
     justify-content: flex-start;
@@ -28,6 +28,7 @@
 .homeContainer::-webkit-scrollbar {
   display: none;
 }
+
 .homeContainer {
   -ms-overflow-style: none;
   scrollbar-width: none;

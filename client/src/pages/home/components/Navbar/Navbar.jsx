@@ -54,11 +54,10 @@ const Navbar = () => {
             }}
           />
         </div>
-        <div className={styles.searchContainer} style={{
-          display: navState ? "block" : "none",
-          padding: "8px",
-          marginTop: "16px"
-        }}>
+        <div 
+          className={styles.searchContainer} 
+          style={{ display: navState ? "block" : "none" }}
+        >
           <input
             type="text"
             placeholder="Search vibes..."
@@ -91,7 +90,9 @@ const Navbar = () => {
             itemName={"Settings"}
             navState={navState}
           />
-          <LogOut navState={navState} />
+          <div className={styles.logoutWrapper}>
+            <LogOut navState={navState} />
+          </div>
         </section>
       </div>
     </>

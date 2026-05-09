@@ -49,6 +49,7 @@ const Search = () => {
               options={poll.options}
               selected={poll.selectedIndex !== undefined ? poll.selectedIndex : null}
               uploadDate={poll.date}
+              saved={poll.isSaved || false}
             />
           ))}
         </>

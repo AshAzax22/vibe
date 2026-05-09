@@ -85,12 +85,14 @@ input {
 .progressiveButton:active {
   background-color: blue;
 }
-@media (max-width: 768px) {
+
+@media (max-width: 1024px) {
   .overlay {
     width: 90%;
     padding: 24px 16px;
     gap: 20px;
   }
+
   .overlay .title {
     font-size: 14px;
   }
@@ -100,6 +102,7 @@ input {
   .overlay {
     width: 95%;
   }
+
   input {
     width: 100%;
     box-sizing: border-box;
